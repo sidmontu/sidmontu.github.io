@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Siddhartha - Projects</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/blog.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!--<div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="index.html">Home</a>
+          <a class="blog-nav-item" href="pubs.html">Publications</a>
+          <a class="blog-nav-item" href="projects.html">Projects</a>
+          <a class="blog-nav-item" href="music.html">Music</a>
+          <a class="blog-nav-item active" href="blog.html">Tech Toch</a>
+        </nav>
+      </div>
+    </div>-->
+
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+	   	<div class="container-fluid" id="navfluid">
+	    	<div class="navbar-header">
+	        	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+	            	<span class="sr-only">Toggle navigation</span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+	            </button>
+	            <a class="navbar-brand" href="index.html">Siddhartha</a>
+	       	</div>
+	       	<div class="collapse navbar-collapse" id="navigationbar">
+	           	<ul class="nav navbar-nav">	               	
+	               	<li><a class="blog-nav-item" href="index.html">Home</a></li>
+			        <li><a class="blog-nav-item" href="pubs.html">Publications</a></li>
+			        <li class="active"><a class="blog-nav-item active" href="blog.html">Projects</a></li>
+			        <li><a class="blog-nav-item" href="music.html">Music</a></li>
+	           	</ul>
+	      	</div><!-- /.navbar-collapse -->
+	   	</div><!-- /.container-fluid -->
+	</nav>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">Projects</h1>
+        <p class="lead blog-description">Random collection of stuff that interests me</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+
+          <div class="blog-post">
+            <h2 class="blog-post-title"><a name="ascii">ASCII Art</a></h2>
+            <p class="blog-post-meta">September 2015</p>
+		<p>
+			<img src="projects/ascii/jen_bw.jpg" width="100%"/>
+			<br>
+			<center>Update: Jennifer Aniston ASCII-fied from this project!</center>
+		</p>
+            <p>
+              ASCII art is cool. And so, I wrote an image-to-ASCII converter. It's nothing really novel, actually. It's been done before many times, and I see this implementation as more of a programming exercise for myself.
+
+              </p>
+              <p>
+               Since I have been doing a lot of R programming lately, I decided to use R to write the ASCII converter. Yes, I'm aware that it is not the ideal choice: more lines of code, and probably poorer performance. But these weren't really my concerns, and besides, on modern computers, I found that my code "ASCII-fied" images within minutes. This post is to share what I have made and explain how it works. All of the code and some accompanying examples can be found on GitHub <a href="https://github.com/sidmontu/ascii">here</a>.
+            </p>
+            <p>
+              The code is an almost direct implementation of the content from this wonderful paper by <b>Paul D. O’Grady</b> and <b>Scott T. Rickard</b> titled <i>Automatic ASCII Art Conversion of Binary Images Using Non-Negative Constraints</i>. It can be found in the IET repositories <a href="http://digital-library.theiet.org/content/conferences/10.1049/cp_20080660">here</a>.
+            </p>
+
+            <p>
+              Right, so let's get started. I've divided this post into 3 key sections:
+                <ul>
+                  <li>Setup: What you need before you run the R code to convert the image to ASCII. e.g. generating glyphs from fonts, global constants, etc..</li>
+                  <li>ascii.R: Basically, the meat of this post. What the code is,  how it is organized, and why it works.</li>
+                  <li>Results: The most visually appealing section of this post. Some of the ASCII-fied images, including the famous Lena!</li>
+                </ul>
+            </p>
+            <hr>
+            <h3>1. SETUP</h3>
+            <p>
+                So the very first step is to decide on which font to use, which can be a little tricky (comic sans not even considered, for obvious reasons). The authors in the paper suggest using a monospace font, which makes sense and simplifies the problem. I end up using the same Courier monospace font used by the authors in their experiments.
+            </p>
+            <p>
+                The next step is to generate the glyphs from the font. Glyphs are basically individual characters; they could be a numeral, letter of the alphabet, punctuation, etc. Fonts are digital files that contain information on how to generate these characters (glyphs) in accordance to some common design styles (also known as the font's typeface). We can use the font-files to generate any supported glyphs as image files, which we will use to replace blocks of our original image when converting it to ASCII. We use 95 classic 7-bit-ASCII characters -- 26*2 = 52 alphabets (upper/lower-case), 10 numerals (0-9), 32 characters (just look down at your keyboard, and count the number of characters you can type out with/without the <i>shift</i> key. E.g. !@#$%^*), and the blank (white-space) character -- to generate the ASCII art. We could easily extend this to include the extended 8-bit ASCII set (includes special characters such as "é"), but for now, we limit ourselves to the 95 printable characters detailed above. 
+              </p>
+              <p>
+                Anyways, enough of background.. how do we generate these glyph images from a font-file? Well, given that I have no background on this topic, I turned to the interwebs for a solution, and found a neat little Ruby script written by <b><a href="https://github.com/yukinoraru">yukinoraru</a></b>, which can be found on his/her GitHub repository <a href="https://github.com/yukinoraru/ttf2png">here</a>. The script is straightforward enough to use -- edit the source font-file you want to use, adjust the <var>FONT_SIZE</var> variable to desired size (I use "19x38"), and edit the <var>FIRST</var> and <var>LAST</var> variables (I use "\u0020" and "\u007e" respectively -- characters 32 to 126 in the ASCII table) to specify the start/end ASCII number for glyphs you want to generate. Running the script generates individual font-glyph image files based on your settings, and saves them as PNG files, named as their ASCII number (e.g. the "!" character is number 33 in the ASCII table, and would be generated as 33.png). 
+              </p>
+              <div class="expandableNote" onclick="expandText('note');">
+                <span style="text-decoration: underline;"><b>NOTE</b> (click to expand/hide)</span>
+                <div id="note">
+                  <p>
+                    <i>Some of the glyphs produce an error in the script. The error produces an output something like this:</i><br><br>
+                    <code>
+                      sh: -c: line 0: unexpected EOF while looking for matching `"'<br>
+                      sh: -c: line 1: syntax error: unexpected end of file
+                    </code>
+                    <br><br>
+                    To correctly generate the glyphs of these troublesome characters, you need to add a blackslash ("\") to escape the string. For example, to generate the inverted double-commas (", ASCII-number 34), you would have to type the command as follows instead:<br><br>
+                    <code>
+                      convert -background white -fill black -font courier.ttf -gravity Center  -size 19x38 label:"\"" 34.png
+                    </code>
+                    <br><br>
+                    This error appears for 4 glyphs if I remember correctly -- <code>"</code>, <code>\</code>, <code>@</code>, and <code>`</code>. For the backslash (<code>\</code>), you have to type <b>four backslashes</b> in between the quotes... i.e. <code>label:"\\\\" 92.png</code>.
+                  </p>
+                </div>
+              </div>
+              <br>
+              <p>
+                Eventually, for reasons I shall not go into, I end up using the JPG file format for all glyph and source images. You can easily convert the PNG glyph files from the above step to JPG using <a href="http://www.imagemagick.org/script/index.php">ImageMagick</a>, or whatever suits your jimmies.
+              </p>
+
+              <p>
+                So far, we've made good progress -- we have 95 glyph images in the JPG format, and they are all extracted from the Courier monospace font library. We will convert our input (JPG) image file into an ASCII image that uses these 95 glyph images. I store these glyph images in the folder "Courier-Glyphs".
+              </p>
+
+              <h3>2. ASCII.R</h3>
+              <p>
+                This is where things get interesting, and where we actually start writing the ASCII converter (in R). Before I start sharing code snippets, however, let me try and give a very quick and intuitive description of how we are going to achieve this conversion. If you are interested to learn about the technique in greater detail, I recommend that you read the paper I quoted above.
+              </p>
+
+              <p>
+                Basically, we are trying to approximately reconstruct the input image using the available glyphs. The input image is broken up into 2-D blocks, where each block is the same size as a glyph (I use "19x38" -- width x height). The goal is to find the closest glyph to replace each image-block, i.e. match glyphs with the closest 2-D color-distribution of each image-block. The problem can be represented as a matrix equation:
+                <blockquote>V ≈ WH</blockquote>
+                where V is the matrix generated from the input image, W is the matrix generated from the glyph images, and H is the weights matrix that is iteratively updated and is eventually used to decide on the glyphs to use to generate the ASCII image. We use a winner-takes-all approach: the glyph with the closest match to an image-block is assigned to that image-block. There is an obvious loss of information with this approach, but this is the artistic beauty inherent in ASCII art anyways. This method is known as non-negative matrix factorization (NMF), details of which can be found in the paper again. Right then, hopefully that's enough to get started, let's dive into some code.
+              </p>
+
+              <p>
+                We only need the R <code>jpeg</code> package, which we load by calling <code>library(jpeg)</code> at the beginning. We then define some global constants:
+                
+                <!-- ########## CODE BLOCK ############-->
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">#declare global constants</span>
+num_glyphs <span style="color: #333333">&lt;-</span> <span style="color: #6600EE; font-weight: bold">95</span>
+glyph_size <span style="color: #333333">&lt;-</span> <span style="color: #6600EE; font-weight: bold">19</span><span style="color: #333333">*</span><span style="color: #6600EE; font-weight: bold">38</span>
+beta <span style="color: #333333">&lt;-</span> <span style="color: #6600EE; font-weight: bold">2</span> <span style="color: #888888">#SED = 2, KLD = 1</span>
+epsilon <span style="color: #333333">&lt;-</span> <span style="color: #6600EE; font-weight: bold">0</span> <span style="color: #888888">#threshold</span>
+num_iterations <span style="color: #333333">&lt;-</span> <span style="color: #6600EE; font-weight: bold">500</span> <span style="color: #888888">#number of H update iterations</span>
+</pre></div>
+                <br>
+                The constants are mostly self-explanatory. <var>beta</var> is the variable that controls the cost function update, which can be set to 1 for KLD, or 2 for SED. Details on both choices can be found in the paper. I use the SED method for the examples shared in this post, generally because I find it produces slightly more appealing results to me. There is no performance penalty using either.
+              </p>
+
+              <p>
+                We then convert the input image to grayscale, using the <a href="http://www.johndcook.com/blog/2009/08/24/algorithms-convert-color-grayscale/">luminosity method</a>. For a sanity check, if the input image is already in grayscale, we simply move on and set variable <var>bw_img</var> appropriately.
+
+                <!-- ########## CODE BLOCK ############-->
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">#read in image</span>
+img <span style="color: #333333">&lt;-</span> readJPEG(<span style="background-color: #fff0f0">&quot;input.jpg&quot;</span>)
+<span style="color: #008800; font-weight: bold">if</span> (length(dim(img)) <span style="color: #333333">==</span> <span style="color: #6600EE; font-weight: bold">3</span>){
+  <span style="color: #888888">#convert image to grayscale using luminosity method -- 0.21 R + 0.72 G + 0.07 B</span>
+  bw_img <span style="color: #333333">&lt;-</span> matrix(, nrow <span style="color: #333333">=</span> nrow(img), ncol <span style="color: #333333">=</span> ncol(img))
+  <span style="color: #008800; font-weight: bold">for</span> (i <span style="color: #008800; font-weight: bold">in</span> <span style="color: #6600EE; font-weight: bold">1</span><span style="color: #333333">:</span>nrow(img)){
+    <span style="color: #008800; font-weight: bold">for</span> (j <span style="color: #008800; font-weight: bold">in</span> <span style="color: #6600EE; font-weight: bold">1</span><span style="color: #333333">:</span>ncol(img)){
+      bw_img[i,j] <span style="color: #333333">&lt;-</span> <span style="color: #6600EE; font-weight: bold">0.21</span><span style="color: #333333">*</span>img[i,j,<span style="color: #6600EE; font-weight: bold">1</span>] <span style="color: #333333">+</span> <span style="color: #6600EE; font-weight: bold">0.72</span><span style="color: #333333">*</span>img[i,j,<span style="color: #6600EE; font-weight: bold">2</span>] <span style="color: #333333">+</span> <span style="color: #6600EE; font-weight: bold">0.07</span><span style="color: #333333">*</span>img[i,j,<span style="color: #6600EE; font-weight: bold">3</span>]
+    }
+  }  
+} <span style="color: #008800; font-weight: bold">else</span> {
+  bw_img <span style="color: #333333">&lt;-</span> img
+}
+</pre></div>
+
+              </p>
+              <p>
+                Now that we've read in the JPG image, and converted it to grayscale (if necessary), we have the matrix <var>bw_img</var>, which is simply grayscale values between 0 and 1, inclusive, for each pixel in the original image. We now need to break this 2-D matrix structure into image-blocks, based on the size of the glyphs. The figure below shows how an image can be broken into image-blocks. In this case, the blocks are rather big, as we are breaking the image into only 16 blocks. 
+              </p>
+              <p>
+                <img src="projects/ascii/lena_eg.jpg" width="600" height="250">
+              </p>
+              <p>
+                Each block is the size of one glyph, and hence will eventually be replaced by one character. At this point, it might seem silly that we are going to recreate Lena using only 16 ASCII characters, but bear with me. In practice, the blocks are of smaller size, and hence, giving us better granularity and resolution to produce a clearer, better defined ASCII image output.
+              </p>
+              <p>
+                Right, so what if the input image size is not a nice multiple of glyph size? I.e. I can't break the image into a nice whole number of image-blocks.. what can I do? Well, we can simply pad the original image with ones for any extra rows and columns until the image size is a nice multiple of the glyph size. Why pad with ones? Because in grayscale, one is white, which hopefully would just produce some inconspicuous extra whitespace in the final output ASCII image. I'm not going to explain how to "one pad" the image, it's fairly straightforward and you can look into the code to understand how I achieved it.
+              </p>
+
+              <p>
+                So how do we construct matrix V after we have broken the image into image-blocks? We simply take each image-block, unroll it as a column vector, and iteratively build matrix V one column at a time. So if we take the example figure of Lena above again, the dimensions of our matrix V would be (M*N) x 16, where (M*N) is number of rows of matrix V, and 16 is number of columns of matrix V. Why? When you unroll an image block, there would be M*N elements, resulting in a column-vector of length M*N. There would be 16 such image-blocks, hence, 16 columns in matrix V. Here is what the code looks like to construct matrix V:
+              </p>
+              
+<!-- ########## CODE BLOCK ############-->
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">g_row <span style="color: #333333">&lt;-</span> <span style="color: #6600EE; font-weight: bold">38</span> <span style="color: #888888">#height of glyph = nrow(glyph_matrix) = N</span>
+g_col <span style="color: #333333">&lt;-</span> <span style="color: #6600EE; font-weight: bold">19</span> <span style="color: #888888">#width of glyph = ncol(glyph_matrix) = M</span>
+P <span style="color: #333333">&lt;-</span> nrow(bw_img) <span style="color: #888888">#height of image</span>
+Q <span style="color: #333333">&lt;-</span> ncol(bw_img) <span style="color: #888888">#width of image</span>
+num_blocks_per_row <span style="color: #333333">&lt;-</span> P <span style="color: #333333">/</span> g_row
+num_blocks_per_col <span style="color: #333333">&lt;-</span> Q <span style="color: #333333">/</span> g_col
+
+V <span style="color: #333333">&lt;-</span> matrix(, nrow <span style="color: #333333">=</span> g_row<span style="color: #333333">*</span>g_col, ncol <span style="color: #333333">=</span> num_blocks_per_row<span style="color: #333333">*</span>num_blocks_per_col)
+<span style="color: #008800; font-weight: bold">for</span> (i <span style="color: #008800; font-weight: bold">in</span> <span style="color: #6600EE; font-weight: bold">1</span><span style="color: #333333">:</span>num_blocks_per_row){
+  <span style="color: #008800; font-weight: bold">for</span> (j <span style="color: #008800; font-weight: bold">in</span> <span style="color: #6600EE; font-weight: bold">1</span><span style="color: #333333">:</span>num_blocks_per_col){
+    v <span style="color: #333333">&lt;-</span> vector()
+    <span style="color: #888888">#construct column-vector of image-block</span>
+    <span style="color: #008800; font-weight: bold">for</span> (x <span style="color: #008800; font-weight: bold">in</span> <span style="color: #6600EE; font-weight: bold">1</span><span style="color: #333333">:</span>g_col){
+      <span style="color: #008800; font-weight: bold">for</span> (y <span style="color: #008800; font-weight: bold">in</span> <span style="color: #6600EE; font-weight: bold">1</span><span style="color: #333333">:</span>g_row){
+        v <span style="color: #333333">&lt;-</span> c(v,bw_img[(i<span style="color: #6600EE; font-weight: bold">-1</span>)<span style="color: #333333">*</span>g_row<span style="color: #333333">+</span>y,(j<span style="color: #6600EE; font-weight: bold">-1</span>)<span style="color: #333333">*</span>g_col<span style="color: #333333">+</span>x])
+      }
+    }   
+    V[,(i<span style="color: #6600EE; font-weight: bold">-1</span>)<span style="color: #333333">*</span>num_blocks_per_col<span style="color: #333333">+</span>j] <span style="color: #333333">&lt;-</span> v
+  }
+}
+</pre></div>
+              <br>
+              <p>
+                Note that P and Q are the dimensions of the image <i><b>after</b></i> it has been resized and one-padded, as described earlier.
+              </p>
+
+              <p>
+                Let's now construct matrix W using the 95 glyphs we generated in the section earlier.
+              </p>
+
+<!-- ########## CODE BLOCK ############-->            
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">#read in glyphs to construct the matrix W</span>
+W <span style="color: #333333">&lt;-</span> matrix(, ncol <span style="color: #333333">=</span> num_glyphs, nrow <span style="color: #333333">=</span> glyph_size)
+
+glyphDir <span style="color: #333333">&lt;-</span> <span style="background-color: #fff0f0">&quot;./Courier-Glyphs/&quot;</span>
+<span style="color: #008800; font-weight: bold">for</span> (i <span style="color: #008800; font-weight: bold">in</span> <span style="color: #6600EE; font-weight: bold">32</span><span style="color: #333333">:</span><span style="color: #6600EE; font-weight: bold">126</span>){ <span style="color: #888888">#32:126 --&gt; numbering of glyph file name</span>
+  filename <span style="color: #333333">&lt;-</span> paste(glyphDir,i,<span style="background-color: #fff0f0">&quot;.jpg&quot;</span>,sep<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;&quot;</span>)
+  glyph <span style="color: #333333">&lt;-</span> readJPEG(filename)
+  glyph <span style="color: #333333">&lt;-</span> as.vector(glyph) <span style="color: #888888">#column-wise unroll</span>
+  l2norm <span style="color: #333333">&lt;-</span> sqrt(sum(glyph<span style="color: #333333">^</span><span style="color: #6600EE; font-weight: bold">2</span>))
+  glyph <span style="color: #333333">&lt;-</span> glyph<span style="color: #333333">/</span>l2norm
+  W[,i<span style="color: #6600EE; font-weight: bold">-31</span>] <span style="color: #333333">&lt;-</span> glyph
+}
+</pre></div>
+              <br>
+              <p>
+                The intuition is the same here as well. We have glyph images, which are of size image-block. We can simply unroll each glyph as a column-vector, which gives us a set of possible columns we want to try and fit to reconstruct the original image. Matrix W, just like V, remains constant througout the runtime. Note that each glyph is rescaled by its L2-norm. This step is important, as it rescales the pixels to reflect a color-weight-distribution instead of raw pixel values. Since it is a winner-takes-all approach, the rescaling helps the convergence process. Finally, the dimensions of matrix W, referring back to the Lena example above again, would be (M*N) x 95, as there are 95 possible glyphs in our current implementation.
+              </p>
+
+              <p>
+                Alright, so we're almost done. We are left with the matrix H, which is the matrix that stores the weights, and is iteratively updated to refine the glyph selected for each image-block. The dimensions of matrix W is 95 * (number of image blocks), or 95 * 16 for the Lena example above. Each column has 95 rows, which represent weights to select one of the possible 95 glyphs. We have to update these weights iteratively for each column, which represent each of the image-blocks. The update function is the heart of this implementation, as it ultimately decides the performance of the converter. This, incidentally, was also the hardest, yet shortest (in number of lines of code), to write. Here is the mathematical formulation of the update function given in the paper:
+              </p>
+              <p>
+                <img src="projects/ascii/equation.jpg" width="350", height="70">
+              </p>
+              <p>
+                Here is how I wrote it in R. Note that we update the H matrix for <var>num_iterations</var> specified above, and <var>%*%</var> is the matrix-multiplication operator in R. Also, W is initialized with random positive non-zero numbers.
+              </p>
+
+<!-- ########## CODE BLOCK ############-->
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">for</span> (t <span style="color: #008800; font-weight: bold">in</span> <span style="color: #6600EE; font-weight: bold">1</span><span style="color: #333333">:</span>num_iterations){
+  WH <span style="color: #333333">&lt;-</span> W <span style="color: #333333">%*%</span> H    
+  WH_num <span style="color: #333333">&lt;-</span> V<span style="color: #333333">/</span>(WH<span style="color: #333333">^</span>(<span style="color: #6600EE; font-weight: bold">2</span><span style="color: #333333">-</span>beta))
+  WH_den <span style="color: #333333">&lt;-</span> WH<span style="color: #333333">^</span>(beta<span style="color: #6600EE; font-weight: bold">-1</span>)
+  H_next <span style="color: #333333">&lt;-</span> H <span style="color: #333333">*</span> (t(W) <span style="color: #333333">%*%</span> WH_num)<span style="color: #333333">/</span>(t(W) <span style="color: #333333">%*%</span> WH_den)
+  H <span style="color: #333333">&lt;-</span> H_next
+  <span style="color: #888888">#sanity check to make sure we don&#39;t get infinities/NaNs</span>
+  H_vec <span style="color: #333333">&lt;-</span> as.vector(H)
+  H_vec[<span style="color: #333333">!</span>is.finite(H_vec)] <span style="color: #333333">&lt;-</span> <span style="color: #6600EE; font-weight: bold">0</span>
+  H <span style="color: #333333">&lt;-</span> matrix(H_vec,nrow <span style="color: #333333">=</span> num_glyphs, ncol <span style="color: #333333">=</span> num_blocks_per_row<span style="color: #333333">*</span>num_blocks_per_col)
+}
+</pre></div>
+              <br>
+              <p>
+                The hard part about this chunk of code was to express the mathematical formulation of the update function above as a bunch of single-shot linear algebra matrix operations (transpose, matrix-multiplication, etc). Once that mind-bending part was done, the code was rather straightforward and only required a few lines. I also initially wrote a naive serial version which updated H matrix values one-at-a-time, but that turned out to be <b><i>extremely</b></i> slow and inefficient. I've commented out that code in the final version, but if you're interested, you can have a look and see why and how nested for-loops with irregular memory access patterns can kill performance. Functionally, both update implementations produce identical results.
+              </p>
+              <div class="expandableNote" onclick="expandText('note1');">
+                <span style="text-decoration: underline;"><b>NOTE ON THE NaNs/INFINITIES</b> (click to expand/hide)</span>
+                <div id="note1">
+                  <p>
+                    If you look at the update function code carefully, you'll realize there's potentially a danger of division by zero. Let's look at it one step at a time in a scenario setting:
+                    <ul>
+                      <li>
+                        A completely black image-block in V would be a column-vector of zeros.
+                      </li>
+                      <li>
+                        In iteration 1, this column would produce a column in matrix <var>WH_num</var> that is also all zeros.
+                      </li>
+                      <li>
+                        This will update the H values for a particular column to all zeros.
+                      </li>
+                      <li>
+                        In the next iteration, matrix WH, which initially will never contain any zero-column (i.e. no completely black glyph), will now have a zero column.
+                      </li>
+                      <li>
+                        You can see what that now creates: division by zero in either <var>WH_num</var> or <var>WH_den</var> evaluations, depending on the <var>beta</var> value.
+                      </li>
+                    </ul>
+                    Now, this problem was either not addressed, experienced, or foreseen by the authors of the paper above. I don't know why, so I end up doing a cheap hack to keep things sane. I make sure that after each update, the H value is a real finite value, and if not, it is set to zero. There is potentially another pitfall here, as there is a chance that the entire H column is now set to zero, and might result in random glyph selection instead of the desired winner-takes-all outcome -- there's no winner, entire column is zeros. Luckily, I have not observed this to affect the output at all, or at least noticeably, and have thus stuck to this hack for now. A possible improvement is to force the offending column (due to the completely black image-block square) to pick a particularly "black-heavy" glyph, such as <code>@</code>, <code>Q</code> or <code>q</code>.
+                  </p>
+                </div>
+              </div>
+              </p>
+              
+              <p>
+                And voila, that is pretty much it. The final steps are pretty easy, so I won't spend too much space explaining them. Once all the desired number of iterations have finished, you identify the maximum H value in each column. The row-index of the maximum value in each column is the glyph number that you should use to replace that particular image-block from the original image. Doing this for all image-blocks, you will end up reconstructing the original image using ASCII characters. You just have to be careful that you reconstruct the image in the exact reverse order in which you constructed matrix V. Then, once you have the reconstructed matrix, you can write it out as a JPG file using the <code>jpeg</code> R package!
+              </p>
+
+              <h3>3. RESULTS</h3>
+              <p>
+                As mentioned above, I use the SED cost function, and hence, the <var>beta</var> variable is set to 2 for the results shown in this section. I also found that I needed to run a fair number of iterations to get better results. Usually, more than 100 iterations would do, but for large images, I ran at least 500 iterations to get appealing results. If you find that your output image, instead of whitespace, is selecting underscores (<code>_</code>) or dashes (<code>-</code>), then you probably need to run the converter for more number of iterations. Also, because of the size of the glyphs (19*38), I realized that the input image has to be rather large to get accurate results. Stick to images that are at least approximately 1000x1000 pixels in size.
+              </p>
+              <p>
+                <table>
+                  <tr>
+                    <td><h4><u>Lena (Original)</u></h4></td>                    
+                    <td><h4><u>Lena (ASCII)</u></h4></td>
+                  </tr>
+                  <tr>
+                    <td><img src="projects/ascii/lena_original.jpg" width="320" height="240"></td>                    
+                    <td><img src="projects/ascii/lena.jpg" width="320" height="240"></td>
+                  </tr>
+                  <tr><td>&nbsp;</td></tr>
+                  <tr>
+                    <td><h4><u>Homer (Original)</u></h4></td>                    
+                    <td><h4><u>Homer (ASCII)</u></h4></td>
+                  </tr>                  
+                  <tr>
+                    <td><img src="projects/ascii/homer_original.jpg" width="280" height="240"></td>                    
+                    <td><img src="projects/ascii/homer.jpg" width="280" height="240"></td>
+                  </tr>
+                  <tr><td>&nbsp;</td></tr>
+                  <tr>
+                    <td><h4><u>Homer 2 (Original)</u></h4></td>                    
+                    <td><h4><u>Homer 2 (ASCII)</u></h4></td>
+                  </tr>                  
+                  <tr>
+                    <td><img src="projects/ascii/homer1_original.jpg" width="320" height="240"></td>                    
+                    <td><img src="projects/ascii/homer1.jpg" width="320" height="240"></td>
+                  </tr>
+                  <tr><td>&nbsp;</td></tr>
+                  <tr><td>.. and the scariest one of them all...</td></tr>
+                  <tr><td>&nbsp;</td></tr>
+                  <tr>
+                    <td><h4><u>Jennifer Aniston (Original)</u></h4></td>                    
+                    <td><h4><u>Jennifer Aniston (ASCII)</u></h4></td>
+                  </tr>                  
+                  <tr>
+                    <td><img src="projects/ascii/jennifer_original.jpg" width="320" height="240"></td>                    
+                    <td><img src="projects/ascii/jennifer.jpg" width="320" height="240"></td>
+                  </tr>
+                </table>
+                Somehow, all her facial features were lost and we got a rather scary looking smile, if that can be called a smile... I believe the problem in this case turned out to be the granularity. For the future, I'll try re-running these with smaller glyph sizes, and more iterations, if needed.              
+              </p>              
+              <p>
+                Well, that's all there is to this post for now. Hope you enjoyed the little tutorial, and if you have any questions, feel free to contact me!
+              </p>
+
+              <h3>CREDITS</h4>
+                Thanks to <a href="http://hilite.me/">Hilite.me</a> for providing a tool to render beautiful looking code in HTML/CSS.
+          </div>
+
+          <!--
+          <nav>
+            <ul class="pager">
+              <li><a href="#">Previous</a></li>
+              <li><a href="#">Next</a></li>
+            </ul>
+          </nav>
+          -->
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+          <p><img src="blog_profile.jpg" alt="Me" width="175" height="175"></p>
+            <p>Sid loves anything that is tech or computers, although he can't always make sense of either. In his free time, he does his own little programming projects that involve anything from big data science using R, writing meaningless applications using HTML/CSS/JS, or quirky little hardware projects involving embedded devices like the raspberry pi. This space is an attempt to document some of these endeavours.</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="http://www.linkedin.com/pub/siddhartha/64/490/632"><img src="linkedin.png" width=20 height=20 alt="sid-linkedin"> LinkedIn</a></li>
+              <li><a href="https://www.facebook.com/sidmontu"><img src="fb.png" width=20 height=20 alt="sid-facebook"> Facebook</a></li>
+              <li><a href="https://twitter.com/sidmontu"><img src="twitter.png" width=20 height=20 alt="sid-twitter"> Twitter</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
