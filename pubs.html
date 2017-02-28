@@ -58,6 +58,20 @@
  			</div>			
 	 		<hr>
 			<p>
+				(POSITION-PAPER)<br>
+	 			<a name="OLAF2017" href="pubs_pdfs/ooo_dataflow_olaf2017.pdf">Out-of-Order Dataflow Scheduling for FPGA Overlays</a><br>
+				<b><u>Siddhartha</u></b>, Nachiket Kapre<br><em>Overlay Architectures for FPGAs (OLAF) Workshop (co-located with FPGA 2017)</em>, February 2017 
+	 		</p>
+ 			<div class="expandableNote" onclick="expandText('abstract_olaf2017');">
+ 				<em><b>Abstract (click to expand/hide)</b></em> <br>
+ 				<div id="abstract_olaf2017">
+					<p>
+						We exploit floating-point DSPs in the Arria10 FPGA and multi-pumping feature of the M20K RAMs to build a dataflow-driven soft processor fabric for large graph workloads. In this paper, we introduce the idea of out-of-order node scheduling across a large number of local nodes (thousands) per processor by combining an efficient node tagging scheme along with leading-one detector circuits. We use a static one-time node labeling algorithm to sort nodes based on criticality to organize local memory inside each soft processor.  This translates to a small ~6% memory overhead. When compared to a memory-expensive FIFO-based first-come-first-serve approach used in previous studies, we deliver up to 50% performance improvement while eliminating the cost of the FIFOs. On the Arria10 10AX115S board, we can create an overlay  design of up to 300 processors connected by high bandwidth Hoplite NoC at frequencies up to 250MHz.
+					</p>
+ 				</div>
+ 			</div>			
+	 		<hr>
+			<p>
 			<b><font color="#ff0000">(BEST PAPER AWARD)</font></b><br>
 	 			<a name="CASES2016" href="pubs_pdfs/deeplearn_cases2016.pdf">CaffePresso: An Optimized Library for Deep Learning on Embedded Accelerator-based platforms</a><br>
 				Gopalakrishna Hegde, <b><u>Siddhartha</u></b>, Nachiappan Ramasamy, Nachiket Kapre<br><em>International Conference on Compilers, Architecture, and Synthesis for Embedded Systems</em>, October 2016
