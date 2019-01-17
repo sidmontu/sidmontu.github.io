@@ -1,2 +1,3 @@
-date,distance_km,time_m,time_s,weight_kg,pushups,treadmill_calories
-16-01-2019,5.52,30,0,89.8,0,449
+date,distance_km,time_m,time_s,weight_kg,pushups,treadmill_calories,steps
+16-01-2019,5.52,30,0,89.8,0,449,12491
+17-01-2019,0,0,0,NA,0,0,7036

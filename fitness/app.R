@@ -11,7 +11,8 @@ ui <- pageWithSidebar(
     # Sidebar panel for inputs
     sidebarPanel(
         selectInput("variable", "Type:",
-                    c("30-min cardio" = "30-minute jogs on treadmill",
+                    c("Steps" = "Daily Steps",
+                      "30-min cardio" = "30-minute jogs on treadmill",
                       "Strength" = "Pushups",
                       "IPPT Runs" = "2.4km IPPT runs",
                       "Long Distance Runs" = "Long-distance runs"))
@@ -29,7 +30,7 @@ data <- read.csv("data.csv",header=T,sep=",")
 data$date <- format(as.Date(data$date,format="%d-%m-%Y"),format="%d-%b, %Y")
 # colnames(data) <- c("Date", "Distance (km)", "time_m", "time_s", "Weight (kg)", "Pushups", "Time")
 data$time <- paste(data$time_m,"m:",formatC(data$time_s, width = 2, format = "d", flag = "0"),"s",sep="")
-data_table <- data[,c(1,2,8)]
+data_table <- data[,c(1,2,9)]
 colnames(data_table) <- c("Date", "Distance (km)", "Time")
 
 # Server logic
