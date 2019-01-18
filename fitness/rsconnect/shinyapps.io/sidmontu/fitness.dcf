@@ -5,6 +5,6 @@ account: sidmontu
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 646244
-bundleId: 1817391
+bundleId: 1822006
 url: https://sidmontu.shinyapps.io/fitness/
-when: 1547638775.69746
+when: 1547813750.34943

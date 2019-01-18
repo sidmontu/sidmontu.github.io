@@ -30,8 +30,11 @@ data <- read.csv("data.csv",header=T,sep=",")
 data$date <- format(as.Date(data$date,format="%d-%m-%Y"),format="%d-%b, %Y")
 # colnames(data) <- c("Date", "Distance (km)", "time_m", "time_s", "Weight (kg)", "Pushups", "Time")
 data$time <- paste(data$time_m,"m:",formatC(data$time_s, width = 2, format = "d", flag = "0"),"s",sep="")
-data_table <- data[,c(1,2,9)]
+data_table <- data[,c(1,2,10)]
+data_plot <- data[,c(1,2,10)]
 colnames(data_table) <- c("Date", "Distance (km)", "Time")
+data_table <- data_table[complete.cases(data_table),]
+data_plot <- data_plot[complete.cases(data_plot),]
 
 # Server logic
 server <- function(input,output) {
@@ -45,11 +48,11 @@ server <- function(input,output) {
     })
 
     output$active_plot <- renderPlot({
-        ggplot(data,aes(x=date,y=distance_km)) +
+        ggplot(data_plot,aes(x=date,y=distance_km)) +
             geom_point() +
-            geom_line() +
+            geom_line(data=data_plot,aes(x=date,y=distance_km)) +
             xlab("Date") +
-            scale_y_continuous("Distance (km)") +
+            scale_y_continuous("Distance (km)",limits=c(0,7),breaks=seq(0,7,by=1)) +
             theme_bw()
     })
 
