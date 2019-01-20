@@ -15,7 +15,8 @@ ui <- pageWithSidebar(
                       "30-min cardio" = "30-minute jogs on treadmill",
                       "Strength" = "Pushups",
                       "IPPT Runs" = "2.4km IPPT runs",
-                      "Long Distance Runs" = "Long-distance runs"))
+                      "Long Distance Runs" = "Long-distance runs",
+                      "Weight" = "Weight (kg)"))
     ),
 
     # Main panel for displaying outputs
@@ -30,11 +31,21 @@ data <- read.csv("data.csv",header=T,sep=",")
 data$date <- format(as.Date(data$date,format="%d-%m-%Y"),format="%d-%b, %Y")
 # colnames(data) <- c("Date", "Distance (km)", "time_m", "time_s", "Weight (kg)", "Pushups", "Time")
 data$time <- paste(data$time_m,"m:",formatC(data$time_s, width = 2, format = "d", flag = "0"),"s",sep="")
-data_table <- data[,c(1,2,10)]
-data_plot <- data[,c(1,2,10)]
-colnames(data_table) <- c("Date", "Distance (km)", "Time")
-data_table <- data_table[complete.cases(data_table),]
-data_plot <- data_plot[complete.cases(data_plot),]
+
+data_plot_distance <- data[,c(1,2,10)]
+data_plot_distance <- data_plot_distance[complete.cases(data_plot_distance),]
+data_table_distance <- data_plot_distance
+colnames(data_table_distance) <- c("Date", "Distance (km)", "Time")
+
+data_plot_steps <- data[,c(1,9)]
+data_plot_steps <- data_plot_steps[complete.cases(data_plot_steps),]
+data_table_steps <- data_plot_steps
+colnames(data_table_steps) <- c("Date", "Steps")
+
+data_plot_weight <- data[,c(1,5)]
+data_plot_weight <- data_plot_weight[complete.cases(data_plot_weight),]
+data_table_weight <- data_plot_weight
+colnames(data_table_weight) <- c("Date", "Weight (kg)")
 
 # Server logic
 server <- function(input,output) {
@@ -48,15 +59,40 @@ server <- function(input,output) {
     })
 
     output$active_plot <- renderPlot({
-        ggplot(data_plot,aes(x=date,y=distance_km)) +
-            geom_point() +
-            geom_line(data=data_plot,aes(x=date,y=distance_km)) +
-            xlab("Date") +
-            scale_y_continuous("Distance (km)",limits=c(0,7),breaks=seq(0,7,by=1)) +
-            theme_bw()
+        if (input$variable == "Daily Steps") {
+            ggplot(data_plot_steps,aes(x=date,y=steps/1e3)) +
+                geom_point() +
+                geom_line(data=data_plot_steps,aes(x=date,y=steps/1e3)) +
+                xlab("Date") +
+                scale_y_continuous("Daily Steps (Thousands)",breaks=seq(0,ceiling(max(data_plot_steps$steps/1e3)),by=1)) +
+                theme_bw()
+        } else if (input$variable == "Weight (kg)") {
+            ggplot(data_plot_weight,aes(x=date,y=weight_kg)) +
+                geom_point() +
+                geom_line(data=data_plot_weight,aes(x=date,y=weight_kg)) +
+                xlab("Date") +
+                scale_y_continuous("Weight (kg)") +
+                theme_bw()
+        } else {
+            ggplot(data_plot_distance,aes(x=date,y=distance_km)) +
+                geom_point() +
+                geom_line(data=data_plot_distance,aes(x=date,y=distance_km)) +
+                xlab("Date") +
+                scale_y_continuous("Distance (km)",limits=c(0,7),breaks=seq(0,7,by=1)) +
+                theme_bw()
+        }
     })
 
-    output$table <- renderTable(data_table)
+    output$table <- renderTable({
+        if (input$variable == "Daily Steps") {
+            data_table_steps
+        } else if (input$variable == "Weight (kg)") {
+            data_table_weight
+        } else {
+            data_table_distance
+        }
+    })
+
 }
 
 shinyApp(ui,server)
