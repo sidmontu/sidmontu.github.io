@@ -63,6 +63,8 @@ server <- function(input,output) {
             ggplot(data_plot_steps,aes(x=date,y=steps/1e3)) +
                 geom_point() +
                 geom_line(data=data_plot_steps,aes(x=date,y=steps/1e3)) +
+                geom_hline(yintercept=mean(data_plot_steps$steps)/1e3,linetype="dashed",color="red") +
+                annotate("text", x=min(data_plot_steps$date), y=mean(data_plot_steps$steps)/1e3 + 0.3, label= "Mean", color="red") +
                 xlab("Date") +
                 scale_y_continuous("Daily Steps (Thousands)",breaks=seq(0,ceiling(max(data_plot_steps$steps/1e3)),by=1)) +
                 theme_bw()
@@ -70,6 +72,8 @@ server <- function(input,output) {
             ggplot(data_plot_weight,aes(x=date,y=weight_kg)) +
                 geom_point() +
                 geom_line(data=data_plot_weight,aes(x=date,y=weight_kg)) +
+                geom_hline(yintercept=80,linetype="dashed",color="blue") +
+                annotate("text", x=max(data_plot_distance$date), y=80.5, label= "Target", color="blue") +
                 xlab("Date") +
                 scale_y_continuous("Weight (kg)") +
                 theme_bw()
@@ -77,6 +81,8 @@ server <- function(input,output) {
             ggplot(data_plot_distance,aes(x=date,y=distance_km)) +
                 geom_point() +
                 geom_line(data=data_plot_distance,aes(x=date,y=distance_km)) +
+                geom_hline(yintercept=6.5,linetype="dashed",color="darkgreen") +
+                annotate("text", x=max(data_plot_distance$date), y=6.7, label= "Current target", color="darkgreen") +
                 xlab("Date") +
                 scale_y_continuous("Distance (km)",limits=c(0,7),breaks=seq(0,7,by=1)) +
                 theme_bw()
