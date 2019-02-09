@@ -344,9 +344,7 @@
       var i = 0;
       var txt0 = 'Hello!';
       var txt1 = "Namaste!";
-      var txt2 = 'Hola!';
-      var txt3 = 'Bonjour!';
-      var speed = 200;
+      var speed = 150;
       var j = 0;
 
       function typer() {
@@ -358,11 +356,11 @@
             var str = document.getElementById("typing_hello").innerHTML;
             document.getElementById("typing_hello").innerHTML = str.substring(0,str.length-1);
             j++;
-            setTimeout(typer, speed);
             if (j == txt0.length) {
               i++;
               j = 0;
             }
+            setTimeout(typer, speed);
           } else if (i <= (txt0.length + txt1.length)) {
             document.getElementById("typing_hello").innerHTML += txt1.charAt(i-txt0.length-1);
             i++;
