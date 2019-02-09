@@ -58,7 +58,11 @@
   		</div>
   		<div class="col-md-9">
             <!--<h2>Hello!</h2>-->
-            <h2 id="typing_hello"></h2>
+            <table class="t-table">
+              <tr style="line-height: 8px; height: 8px;">
+                <td id="typing_hello"></td>
+              </tr>
+            </table>
 			<p align="justify">
 				<font size="3">
 					<!--					I am a fourth year Ph.D. candidate at Nanyang Technological University (NTU) in Singapore. I work in the Hardware and Embedded Systems Lab (HESL) in the School of Computer Science and Engineering. My research interests revolve around the world of embedded/reconfigurable high-performance computing. My current research focus is on the applicability of dataflow computing to modern computing problems.
@@ -338,16 +342,42 @@
     <script src="js/bootstrap.min.js"></script>
     <script>
       var i = 0;
-      var txt = 'Hello!';
-      var speed = 50;
+      var txt0 = 'Hello!';
+      var txt1 = "Namaste!";
+      var txt2 = 'Hola!';
+      var txt3 = 'Bonjour!';
+      var speed = 200;
+      var j = 0;
 
       function typer() {
-        if (i < txt.length) {
-          document.getElementById("typing_hello").innerHTML += txt.charAt(i);
-          i++;
-          setTimeout(typeWriter, speed);
+          if (i < txt0.length) {
+            document.getElementById("typing_hello").innerHTML += txt0.charAt(i);
+            i++;
+            setTimeout(typer, speed);
+          } else if (i == txt0.length) {
+            var str = document.getElementById("typing_hello").innerHTML;
+            document.getElementById("typing_hello").innerHTML = str.substring(0,str.length-1);
+            j++;
+            setTimeout(typer, speed);
+            if (j == txt0.length) {
+              i++;
+              j = 0;
+            }
+          } else if (i <= (txt0.length + txt1.length)) {
+            document.getElementById("typing_hello").innerHTML += txt1.charAt(i-txt0.length-1);
+            i++;
+            setTimeout(typer,speed);
+          } else if (i > (txt1.length+txt0.length)) {
+            var str = document.getElementById("typing_hello").innerHTML;
+            document.getElementById("typing_hello").innerHTML = str.substring(0,str.length-1);
+            j++;
+            setTimeout(typer, speed);
+            if (j == txt1.length) {
+              i = 0;
+              j = 0;
+            }
+          } 
         }
-      }
     </script>
     </body>
 </html>

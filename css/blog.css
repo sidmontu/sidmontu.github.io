@@ -179,3 +179,17 @@ h6, .h6 {
   border: 1px dashed gray; 
   padding:15px 15px 15px 15px;
 }
+
+.t-table {
+  /*border: 1px solid black;*/
+  height: 70px;
+  text-align: center;
+  font-size: 40px;
+}
+.t-table td {
+  valign: middle;
+}
+
+.t-table td:empty {
+  valign: middle;
+}
