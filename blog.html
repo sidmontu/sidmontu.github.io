@@ -65,6 +65,76 @@
         <div class="col-sm-8 blog-main">
 
           <div class="blog-post">
+            <h2 class="blog-post-title"><a name="anagram-prime">Anagram Checker</a></h2>
+            <p class="blog-post-meta">June 2017</p>
+            <p>
+            Inspired from <a href="https://www.reddit.com/r/math/comments/6hb0xk/clever_algorithm_to_determine_whether_or_not_two/" target="_blank">this Reddit thread <img src="extlink.png"></a>,
+            Source code: <a href="https://github.com/sidmontu/anagram-prime" target="_blank">Github <img src="extlink.png"></a>
+            </p>
+
+            <h3>Idea</h3>
+            <p>Proposed algorithm to find if two input words are anagrams: Map
+            each of the 26 english characters to a unique prime number. Then
+            calculate the product of the string. Two strings are anagrams <i>if
+            and only if</i> their products are the same. Let's call this approach PRIME.</p>
+
+            <p>Current best ways of doing the above, in order of popularity/performance:</p>
+
+            <ol>
+              <li>Count frequency of each letter in each word, and then simply
+                compare. If the strings are anagrams, the frequency bins will
+                be identical. Let's call this approach FREQ.</li>
+              <li>Sort letters in each word. The resultant strings of each word
+                will be exact. [NOT Implemented yet]</li>
+            </ol>
+
+            <p>The proposed algorithm is arguably slower, and also susceptible to integer overflow. Will require 128-bit integer arithmetic at least to guarantee all words can be supported (<a href="https://www.reddit.com/r/math/comments/6hb0xk/clever_algorithm_to_determine_whether_or_not_two/dix8409/" target="_blank">Source <img src="extlink.png"></a>)</p>
+
+            <p>But the following optimization might help practical use-case:
+            Map primes efficiently to each letter by frequency of occurrence in
+            the english language.. example, 'e' is the most frequently found
+            alphabet in text, so map 'e' to the smallest prime number, i.e. 'e'
+            = 2. Let's call this approach PRIME-ORD.</p>
+
+            <h3>Some results</h3>
+
+            $> ./anagram_checker hello olleh<br><br>
+            [FREQ] 0.035254 microseconds/evaluation<br><br>
+            [PRIME] 0.008961 microseconds/evaluation<br><br>
+            [PRIME-ORD] 0.009217 microseconds/evaluation<br><br>
+            hello and olleh are anagrams<br><br>
+
+            $> ./anagram_checker hydroxydeoxycorticosterones hydroxydesoxycorticosterone<br><br>
+            [FREQ] 0.062869 microseconds/evaluation<br><br>
+            [PRIME] 0.048360 microseconds/evaluation<br><br>
+            [PRIME-ORD] 0.048361 microseconds/evaluation<br><br>
+            hydroxydeoxycorticosterones and hydroxydesoxycorticosterone are anagrams<br><br>
+
+            <h3>Some thoughts</h3>
+            <p>Interestingly, the prime number approach is faster than the
+            frequency-binning approach. This is kind of a testament to how well
+            optimized integer arithmetic is on modern microprocessors. Ordering
+            the primes doesn't seem to have any significant impact on
+            performance, but you could argue that the two simple tests above
+            are not enough to stress the processor. Longer strings, or larger
+            number of solves might add up to deliver an overall benefit with
+            the PRIME-ORD approach. In the future, a dictionary run on known
+            anagrams (or some curated list of non-anagrams) could help test
+            this theory. The sorting approach described above could also be
+            implemented as a third option, but I doubt it would outperform the
+            prime-multiplication approach on anagrams in the English
+            language.</p>
+
+            <p>Which kind of brings me to some final thoughts... is there any
+            use for this stuff? Anagram checking isn't exactly going to make
+            the "Top 10 unsolved problems" list, but perhaps there is some
+            esoteric use-case that I'm unaware of? I'll love to hear about it
+            if you have any thoughts on this.</p>
+          </div>
+
+          <hr>
+
+          <div class="blog-post">
             <h2 class="blog-post-title"><a name="ascii">ASCII Art</a></h2>
             <p class="blog-post-meta">September 2015</p>
 		<p>
@@ -76,10 +146,10 @@
               ASCII art is cool. And so, I wrote an image-to-ASCII converter. It's nothing really novel, actually, but I thought I'll write one anyway as an exercise. 
               </p>
               <p>
-               Since I have been doing a lot of R programming lately, I decided to use R to write the ASCII converter. Yes, I'm aware that it is not the ideal choice: more lines of code, and probably poorer performance. But these weren't really my concerns, and besides, on modern computers, I found that my code "ASCII-fied" images within minutes. This post is to share what I have made and explain how it works. All of the code and some accompanying examples can be found on GitHub <a href="https://github.com/sidmontu/ascii" target="_blank">here</a>.
+              Since I have been doing a lot of R programming lately, I decided to use R to write the ASCII converter. Yes, I'm aware that it is not the ideal choice: more lines of code, and probably poorer performance. But these weren't really my concerns, and besides, on modern computers, I found that my code "ASCII-fied" images within minutes. This post is to share what I have made and explain how it works. All of the code and some accompanying examples can be found on GitHub <a href="https://github.com/sidmontu/ascii" target="_blank">here <img src="extlink.png"></a>.
             </p>
             <p>
-              The code is an almost direct implementation of the content from this wonderful paper by <b>Paul D. O’Grady</b> and <b>Scott T. Rickard</b> titled <i>Automatic ASCII Art Conversion of Binary Images Using Non-Negative Constraints</i>. It can be found in the IET repositories <a href="http://digital-library.theiet.org/content/conferences/10.1049/cp_20080660" target="_blank">here</a>.
+            The code is an almost direct implementation of the content from this wonderful paper by <b>Paul D. O’Grady</b> and <b>Scott T. Rickard</b> titled <i>Automatic ASCII Art Conversion of Binary Images Using Non-Negative Constraints</i>. It can be found in the IET repositories <a href="http://digital-library.theiet.org/content/conferences/10.1049/cp_20080660" target="_blank">here <img src="extlink.png"></a>.
             </p>
 
             <p>
@@ -99,7 +169,7 @@
                 The next step is to generate the glyphs from the font. Glyphs are basically individual characters; they could be a numeral, letter of the alphabet, punctuation, etc. Fonts are digital files that contain information on how to generate these characters (glyphs) in accordance to some common design styles (also known as the font's typeface). We can use the font-files to generate any supported glyphs as image files, which we will use to replace blocks of our original image when converting it to ASCII. We use 95 classic 7-bit-ASCII characters -- 26*2 = 52 alphabets (upper/lower-case), 10 numerals (0-9), 32 characters (just look down at your keyboard, and count the number of characters you can type out with/without the <i>shift</i> key. E.g. !@#$%^*), and the blank (white-space) character -- to generate the ASCII art. We could easily extend this to include the extended 8-bit ASCII set (includes special characters such as "é"), but for now, we limit ourselves to the 95 printable characters detailed above. 
               </p>
               <p>
-                Anyways, enough of background.. how do we generate these glyph images from a font-file? Well, given that I have no background on this topic, I turned to the interwebs for a solution, and found a neat little Ruby script written by <b><a href="https://github.com/yukinoraru" target="_blank">yukinoraru</a></b>, which can be found on his/her GitHub repository <a href="https://github.com/yukinoraru/ttf2png" target="_blank">here</a>. The script is straightforward enough to use -- edit the source font-file you want to use, adjust the <var>FONT_SIZE</var> variable to desired size (I use "19x38"), and edit the <var>FIRST</var> and <var>LAST</var> variables (I use "\u0020" and "\u007e" respectively -- characters 32 to 126 in the ASCII table) to specify the start/end ASCII number for glyphs you want to generate. Running the script generates individual font-glyph image files based on your settings, and saves them as PNG files, named as their ASCII number (e.g. the "!" character is number 33 in the ASCII table, and would be generated as 33.png). 
+              Anyways, enough of background.. how do we generate these glyph images from a font-file? Well, given that I have no background on this topic, I turned to the interwebs for a solution, and found a neat little Ruby script written by <b><a href="https://github.com/yukinoraru" target="_blank">yukinoraru <img src="extlink.png"></a></b>, which can be found on his/her GitHub repository <a href="https://github.com/yukinoraru/ttf2png" target="_blank">here <img src="extlink.png"></a>. The script is straightforward enough to use -- edit the source font-file you want to use, adjust the <var>FONT_SIZE</var> variable to desired size (I use "19x38"), and edit the <var>FIRST</var> and <var>LAST</var> variables (I use "\u0020" and "\u007e" respectively -- characters 32 to 126 in the ASCII table) to specify the start/end ASCII number for glyphs you want to generate. Running the script generates individual font-glyph image files based on your settings, and saves them as PNG files, named as their ASCII number (e.g. the "!" character is number 33 in the ASCII table, and would be generated as 33.png). 
               </p>
               <div class="expandableNote" onclick="expandText('note');">
                 <span style="text-decoration: underline;"><b>NOTE</b> (click to expand/hide)</span>
@@ -122,7 +192,7 @@
               </div>
               <br>
               <p>
-                Eventually, for reasons I shall not go into, I end up using the JPG file format for all glyph and source images. You can easily convert the PNG glyph files from the above step to JPG using <a href="http://www.imagemagick.org/script/index.php" target="_blank">ImageMagick</a>, or whatever suits your jimmies.
+              Eventually, for reasons I shall not go into, I end up using the JPG file format for all glyph and source images. You can easily convert the PNG glyph files from the above step to JPG using <a href="http://www.imagemagick.org/script/index.php" target="_blank">ImageMagick <img src="extlink.png"></a>, or whatever suits your jimmies.
               </p>
 
               <p>
@@ -156,7 +226,7 @@ num_iterations <span style="color: #333333">&lt;-</span> <span style="color: #66
               </p>
 
               <p>
-                We then convert the input image to grayscale, using the <a href="http://www.johndcook.com/blog/2009/08/24/algorithms-convert-color-grayscale/" target="_blank">luminosity method</a>. For a sanity check, if the input image is already in grayscale, we simply move on and set variable <var>bw_img</var> appropriately.
+              We then convert the input image to grayscale, using the <a href="http://www.johndcook.com/blog/2009/08/24/algorithms-convert-color-grayscale/" target="_blank">luminosity method <img src="extlink.png"></a>. For a sanity check, if the input image is already in grayscale, we simply move on and set variable <var>bw_img</var> appropriately.
 
                 <!-- ########## CODE BLOCK ############-->
 <div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">#read in image</span>
@@ -352,7 +422,7 @@ glyphDir <span style="color: #333333">&lt;-</span> <span style="background-color
               </p>
 
               <h3>CREDITS</h4>
-                Thanks to <a href="http://hilite.me/" target="_blank">Hilite.me</a> for providing a tool to render beautiful looking code in HTML/CSS.
+              Thanks to <a href="http://hilite.me/" target="_blank">Hilite.me <img src="extlink.png"></a> for providing a tool to render beautiful looking code in HTML/CSS.
           </div>
 
           <!--
