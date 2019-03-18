@@ -16,7 +16,7 @@
 
   </head>
 
-  <body onload="typer();">
+  <body onload="typer1();">
   <!--
     <div class="blog-masthead">
       <div class="container">
@@ -47,6 +47,7 @@
 			        <li><a class="blog-nav-item" href="pubs.html">Publications</a></li>
 			        <li><a class="blog-nav-item" href="blog.html">Blog</a></li>
 			        <li><a class="blog-nav-item" href="music.html">Music</a></li>
+			        <li><a class="blog-nav-item" href="scribbles.html">Scribbles</a></li>
 	           	</ul>
 	      	</div><!-- /.navbar-collapse -->
 	   	</div><!-- /.container-fluid -->
@@ -94,7 +95,7 @@
   		<div class="col-md-12">
   			<u>Academic/Work Summary</u> <br>
             <strong>Postdoctoral Researcher</strong> (Oct 2017 - Present), University of Sydney, Australia <br>
-            <strong>PhD Candidate</strong> (Jan 2013 - Jan 2019), Nanyang Technological University, Singapore (Thesis Advisor: <a href="http://nachiket.github.io/" target="_blank">Nachiket Kapre <img src="extlink.png"></a>)  - <i><font color="#ff0000">Oral defense completed!</font></i> <br>
+            <strong>PhD Candidate</strong> (Jan 2013 - Jan 2019), Nanyang Technological University, Singapore (Thesis Advisor: <a href="http://nachiket.github.io/" target="_blank">Nachiket Kapre <img src="extlink.png"></a>) <br><!--- <i><font color="#ff0000">Oral defense completed!</font></i> <br>-->
 			<strong>BEng</strong> (Oct 2009 - Jun 2012), Electrical & Electronics Engineering, Imperial College London <br>
 			<br>
 			<table width="500">
@@ -106,7 +107,7 @@
 						|	 
 					</td>
 					<td width="60%">
-						<a href="Siddhartha.pdf">PDF</a> <a href="https://devdb.io/sidmontu">HTML</a>
+                      <a href="Siddhartha.pdf">PDF</a> <a href="https://devdb.io/sidmontu" target="_blank">DevDB <img src="extlink.png"></a>
 					</td>
 				</tr>
                 <tr>
@@ -117,10 +118,10 @@
 						| 
 					</td>
 					<td width="60%">
-                      <a href="#"><font color="#ff0000">Undergoing final revisions!</font></a>
+                      <a href="thesis.pdf">PDF</a> <a href="https://dr.ntu.edu.sg/handle/10220/47803" target="_blank">DrNTU <img src="extlink.png"></a> 
 					</td>
 				</tr>
-
+<!--
 				<tr>
 					<td width="30%">
 						<strong>BEng Final Year Project</strong>
@@ -132,6 +133,7 @@
 						<a href="Siddhartha_FYP2012.pdf">PDF</a>
 					</td>
 				</tr>
+-->
 				<tr>
 					<td width="30%">
 						<strong>Google Scholar</strong>
@@ -168,7 +170,7 @@
 				University of Sydney, Camperdown<br>
 				Australia NSW 2006<br>
 			<br>
-			Phone: +61 41177-1811<br>
+            <!--Phone: +61 41177-1811<br>-->
 			E-mail: sidmontu AT gmail.com<br>	
 			<br>
 			<strong>Social Media <img src="extlink.png"></strong><br>
@@ -181,6 +183,11 @@
 			<h3>News</h3>
 			<div style="height: 180px;overflow:scroll;">
 				<table>
+                    <tr>
+                      <td valign="top"><strong>14/03/19</strong>: </td><td>&nbsp;</td>
+                      <td>Revisions accepted and hard-bound thesis submitted! (Almost) officially a PhD graduate now - only a convocation to look forward to!</td>
+                    </tr>
+
                     <tr>
                       <td valign="top"><strong>17/01/19</strong>: </td><td>&nbsp;</td>
                       <td>One of my goals for this year is to improve my overall physical health, so I'm going to maintain a detailed fitness log by creating and maintaining this <a href="https://sidmontu.shinyapps.io/fitness/" target="_blank">R Shiny app <img src="extlink.png"></a> to visualize my progress.</td>
@@ -344,7 +351,8 @@
       var i = 0;
       var txt0 = 'Hello!';
       var txt1 = "Namaste!";
-      var speed = 150;
+      var speed = 500;
+      var speedslow = 600;
       var j = 0;
 
       function typer() {
@@ -376,6 +384,27 @@
             }
           } 
         }
+        function typer1() {
+          if (i <= txt0.length) {
+            document.getElementById("typing_hello").innerHTML = txt0.substring(0,i);
+            i++;
+            setTimeout(typer1, speed);
+          } else if (i == (txt0.length + 1)) {
+            document.getElementById("typing_hello").innerHTML += '_';
+            i++;
+            setTimeout(typer1, speed);
+          } else {
+            if (j == 0) {
+              document.getElementById("typing_hello").innerHTML = txt0;
+              j = 1;
+            } else {
+              document.getElementById("typing_hello").innerHTML += '_';
+              j = 0;
+            }
+            setTimeout(typer1, speedslow);
+          }
+        }
+
     </script>
     </body>
 </html>

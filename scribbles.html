@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Siddhartha - Projects</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/blog.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!--<div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="index.html">Home</a>
+          <a class="blog-nav-item" href="pubs.html">Publications</a>
+          <a class="blog-nav-item" href="projects.html">Projects</a>
+          <a class="blog-nav-item" href="music.html">Music</a>
+          <a class="blog-nav-item active" href="blog.html">Tech Toch</a>
+        </nav>
+      </div>
+    </div>-->
+
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+	   	<div class="container-fluid" id="navfluid">
+	    	<div class="navbar-header">
+	        	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+	            	<span class="sr-only">Toggle navigation</span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+	            	<span class="icon-bar"></span>
+	            </button>
+	            <a class="navbar-brand" href="index.html">Siddhartha</a>
+	       	</div>
+	       	<div class="collapse navbar-collapse" id="navigationbar">
+	           	<ul class="nav navbar-nav">	               	
+	               	<li><a class="blog-nav-item" href="index.html">Home</a></li>
+			        <li><a class="blog-nav-item" href="pubs.html">Publications</a></li>
+			        <li><a class="blog-nav-item" href="blog.html">Blog</a></li>
+			        <li><a class="blog-nav-item" href="music.html">Music</a></li>
+			        <li class="active"><a class="blog-nav-item active" href="scribbles.html">Scribbles</a></li>
+	           	</ul>
+	      	</div><!-- /.navbar-collapse -->
+	   	</div><!-- /.container-fluid -->
+	</nav>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">Scribbles</h1>
+        <p class="lead blog-description">Quick cheatsheet/notes on small things that don't really deserve a long writeup.</p>
+      </div>
+
+      <h3>Xilinx Tools</h3>
+      <p>For some obscure reason, if Xilinx tools (e.g. Vivado) is in your $PATH, some C/C++ projects report build errors - I observed this error from trying to build Ettus RFNoC framework using PyBOMBs. Removing Xilinx tools from the $PATH in a fresh terminal does the trick.</p>
+
+      <br>
+
+      <h3>Tensorpack custom DataFlow class</h3>
+      <p>If you have a very large dataset that is dynamically-loaded from disk - i.e. if you keep track of pointers in your get_data() routine to yield data to the trainer at runtime, remember to reset these pointers appropriately at the beginning of the get_data() routine. This is because Tensorpack spawns multiple threads for feeding the Tensorpack trainer at runtime, and without a "reset_state()" function will cause out-of-range memory access errors.</p>
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com" target="_blank">Bootstrap</a> by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
