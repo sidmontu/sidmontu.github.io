@@ -68,6 +68,21 @@
       <h3>Tensorpack custom DataFlow class</h3>
       <p>If you have a very large dataset that is dynamically-loaded from disk - i.e. if you keep track of pointers in your get_data() routine to yield data to the trainer at runtime, remember to reset these pointers appropriately at the beginning of the get_data() routine. This is because Tensorpack spawns multiple threads for feeding the Tensorpack trainer at runtime, and without a "reset_state()" function will cause out-of-range memory access errors.</p>
 
+      <h3>Xilinx pblocks</h3>
+      <p>Pblock is a physical block to constrain nets to physical areas on the FPGA. Pblocks can be nested, but Xilinx recommend at most one-level of nesting, and to avoid it altogether if possible. Pblock can be shaped into custom shapes (instead of just a rectangle) by clicking on the "add pblock rectangle" option when selecting the pblock you wish to reshape. The pblock properties can be exported to a xdc constraints file automatically using "save constraints as" option under "File". These constraints are basically tcl commands that look something like the following:</p>
+      <p style="border:3px; border-style:solid; border-color:#000000; padding: 1em;">
+        create_pblock "name you wish to give to the pblock"<br>
+        add_cells_to_pblock [get_pblocks "name of pblock"] [get_cells -quiet [list "name of module you wish to assign to pblock"]<br>
+        resize_pblock [get_pblocks "name of pblock"] -add {SLICE_"XY-COORD":SLICE_"XY-COORD"}<br>
+        resize_pblock [get_pblocks "name of pblock"] -add {DSP48_"XY-COORD":DSP48_"XY-COORD"}<br>
+        resize_pblock [get_pblocks "name of pblock"] -add {RAMB18_"XY-COORD":RAMB18_"XY-COORD"}<br>
+        resize_pblock [get_pblocks "name of pblock"] -add {RAMB36_"XY-COORD":RAMB36_"XY-COORD"}<br>
+      </p>
+      <p>You can do a DRC check for floorplanning to make sure pblock specified for the module meets expectations. Basically, this is a sanity test.</p>
+      <p>Vivado has an auto-floorplanning tool as well (under Tools - Floorplanning - Auto-create Pblocks). Also worth checking out "Window - Phyiscal Constraints" tab, which will show connectivity between different Pblocks for better visualization of dataflow in your circuit. Individual logic can also be locked into exact locations so that there is consistency between runs (i.e. you don't get a completely different placed/routed solution that you can't quantify whether your changes made any difference between implementation runs).</p>
+      <p>Floorplanning can improve performance and consistency between runs. Some guidelines: floorplan what is necessary, do not over-floorplan. Choose modules to floor-plan that do not have connectivity to lots of other modules, as those modules are better to be broken apart to reduce critical path lengths. Use RTL hierarchy, DRC checks, properties and other Vivado tools to judge what is best and how to floorplan. Finally, floorplanning can be an iterative process.</p>
+      <p>Reference resource: <a href="https://www.xilinx.com/video/hardware/design-analysis-floorplanning-with-vivado.html">https://www.xilinx.com/video/hardware/design-analysis-floorplanning-with-vivado.html</a></p>
+
     </div><!-- /.container -->
 
     <footer class="blog-footer">
