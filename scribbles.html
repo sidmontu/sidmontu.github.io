@@ -83,6 +83,23 @@
       <p>Floorplanning can improve performance and consistency between runs. Some guidelines: floorplan what is necessary, do not over-floorplan. Choose modules to floor-plan that do not have connectivity to lots of other modules, as those modules are better to be broken apart to reduce critical path lengths. Use RTL hierarchy, DRC checks, properties and other Vivado tools to judge what is best and how to floorplan. Finally, floorplanning can be an iterative process.</p>
       <p>Reference resource: <a href="https://www.xilinx.com/video/hardware/design-analysis-floorplanning-with-vivado.html">https://www.xilinx.com/video/hardware/design-analysis-floorplanning-with-vivado.html</a></p>
 
+      <h3>Arch Linux + bspwm + sxhkd</h3>
+      <p>Weird thing I found that if, instead of using urxvt as the main terminal, you are using termite, then there is a weird idiosyncrasy with how a bspc rule has to be declared. In fact, it seems like urxvt also has an oddity from a stackoverflow post that I saw</p>
+      <p>Instead of :</p>
+      <p style="border:3px; border-style:solid; border-color=#000000; padding: 1em;">
+        bspc rule -a termite state=floating<br>
+        bspc rule -a urxvt state=floating
+      </p>
+      <p>You must declare the following (basically the capitalization) :</p>
+      <p style="border:3px; border-style:solid; border-color=#000000; padding: 1em;">
+        bspc rule -a Termite state=floating<br>
+        bspc rule -a URxvt state=floating
+      </p>
+      <p>for the rule to register when creating the window. By the way, what's with the weird names (sxhkd, urxvt)?</p>
+      <p><font color="#FF0000">Problems:</font> panel does not launch automatically on startx.</p>
+
+
+
     </div><!-- /.container -->
 
     <footer class="blog-footer">
