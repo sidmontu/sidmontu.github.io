@@ -97,7 +97,19 @@
       </p>
       <p>for the rule to register when creating the window. By the way, what's with the weird names (sxhkd, urxvt)?</p>
       <p><font color="#FF0000">Problems:</font> panel does not launch automatically on startx.</p>
-
+      
+      <h3>Custom IP on Pynq</h3>
+      <p>Tested with Vivado(HLS) 2017.4</p>
+      <p>For reference: <a href="https://www.youtube.com/watch?v=Dupyek4NUoI">https://www.youtube.com/watch?v=Dupyek4NUoI</a></p>
+      <p>For reference: Pynq-Z1 board part number is xc7z020clg400-1</p>
+      <p>For reference: Pynq-Z1 board files from: <a href="https://github.com/cathalmccabe/pynq-z1_board_files">https://github.com/cathalmccabe/pynq-z1_board_files</a> (installation instructions in the .md file in repo)</p>
+      <p>Steps (roughly) :</p>
+      <p style="border:3px; border-style:solid; border-color=#000000; padding: 1em;">
+      1) Easiest way is to start with VivadoHLS, write your own HLS module that interfaces with the host CPU. Add HLS INTERFACE pragmas to define the I/O ports and their types. e.g. #pragma HLS INTERFACE s_axilite port=<port_name>. You can choose axi, s_axilite, axis for port type (as far as I know for now). Also add #pragma HLS INTERFACE ap_ctrl_none port=return to turn off function call handshake, which creates a whole bunch of extra ports like ap_start, ap_done, ap_idle, and ap_ready, which might not be required. See <a href="https://www.xilinx.com/support/answers/55279.html">https://www.xilinx.com/support/answers/55279.html</a> for more info.<br>
+      2) Run C synthesis, make sure there are no errors and you understand the warnings.<br>
+      3) Click button for "Export RTL". We can use default settings and click ok. This will package your design as an IP. Choose the language you prefer as well (I go with Verilog mostly).<br>
+      4) This is the first interesting part to pay attention to: Under "solution1" folder (assuming you're using the default solution name for Vivado synthesis process), go to impl>misc>drivers>"your ip name">src and open x"ip name"_hw.h. Make a note of all the addresses of each register that is being assigned to your ports. You'll need this later to be able to write your software Python drivers that send data to these memory-mapped AXI ports.<br>
+      5) Switch over to Vivado.
 
 
     </div><!-- /.container -->
