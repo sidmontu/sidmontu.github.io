@@ -111,6 +111,8 @@
       4) This is the first interesting part to pay attention to: Under "solution1" folder (assuming you're using the default solution name for Vivado synthesis process), go to impl>misc>drivers>"your ip name">src and open x"ip name"_hw.h. Make a note of all the addresses of each register that is being assigned to your ports. You'll need this later to be able to write your software Python drivers that send data to these memory-mapped AXI ports.<br>
       5) Switch over to Vivado.
 
+      <h3>AXI-STREAM interface on Pynq (with DMA)</h3>
+      <p>Obscure artifact #1: Interrupts from AXI DMA block have to be handled by an AXI Interrupt controller, instead of simply concat into IRQ_F2P port of Zynq-PS. See <a href="https://forums.xilinx.com/t5/Embedded-Linux/A-key-error-when-I-am-trying-to-access-a-DMA-IP-on-PYNQ-Z1-board/td-p/847817">https://forums.xilinx.com/t5/Embedded-Linux/A-key-error-when-I-am-trying-to-access-a-DMA-IP-on-PYNQ-Z1-board/td-p/847817</a></p>
 
     </div><!-- /.container -->
 
