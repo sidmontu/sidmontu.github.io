@@ -114,6 +114,50 @@
       <h3>AXI-STREAM interface on Pynq (with DMA)</h3>
       <p>Obscure artifact #1: Interrupts from AXI DMA block have to be handled by an AXI Interrupt controller, instead of simply concat into IRQ_F2P port of Zynq-PS. See <a href="https://forums.xilinx.com/t5/Embedded-Linux/A-key-error-when-I-am-trying-to-access-a-DMA-IP-on-PYNQ-Z1-board/td-p/847817">https://forums.xilinx.com/t5/Embedded-Linux/A-key-error-when-I-am-trying-to-access-a-DMA-IP-on-PYNQ-Z1-board/td-p/847817</a></p>
 
+      <h3>DFT/FFT footnotes</h3>
+      <p>Mostly grabbed from a great semi-technical summary in a reddit comment, Source: <a href="https://www.reddit.com/r/explainlikeimfive/comments/9cbi8p/eli5_what_is_the_fast_fourier_transform_or_fft/e5axg1n/">https://www.reddit.com/r/explainlikeimfive/comments/9cbi8p/eli5_what_is_the_fast_fourier_transform_or_fft/e5axg1n/</a>
+
+      <ul>
+        <li>
+        The DFT is N dot products of N sized vectors, which means its computational complexity is <var>N<sup>2</sup></var>. That means doubling your DFT precision results in quadrupling the number of computations.
+        </li>
+
+        <li>
+          The key to the FFT is exploiting the symmetry of the transform kernel, one of the vectors used in the dot product. This allows you to break up your N sized DFT into two N/2 sized DFTs. IE if you have a 128 sized DFT, you can compute it with two 64 sized DFTs, which can be broken to two 32 sized DFTs, and down into two 16 sized, to two 8 sized, etc. This changes the complexity into <var>Nlog<sub>2</sub>(N)</var> computational complexity. <b>The smallest size FFT you take is called the "radix," which can be 2, 4, 8 etc.</b>
+        </li>
+
+        <li>
+          To get non power of two sized DFTs you use a "mixed" radix, meaning you factor it into 2, 3, 4, 5, etc sized chunks.
+        </li>
+
+        <li>
+          There are additional optimizations. The first is for a real valued input, the output is symmetric. Meaning if you want to take a 256 sized FFT of real valued inputs (audio, images, stock prices, whatever), you get a 256 sized output with the same values symmetric about the midpoint. So you only need to compute half as many outputs.
+        </li>
+
+        <li>
+          The next optimization has to do with what are called SIMD operations, single instruction multiple data. If you're familiar with GPUs, this is what makes them fast. The DFT is stateless, meaning that a given output point for a particular radix doesn't depend on any other outputs or inputs. This allows you to compute multiple outputs points of the DFT simultaneously.
+        </li>
+
+        <li>
+          Another big optimization that pops up in terminology is "in place" versus "out of place" FFTs. An "in place" FFT writes the output values to the same memory used for the input, this makes the memory complexity O(1) instead of O(N) and it's a major speedup on modern processors, and also critical on embedded systems with limited memory.
+        </li>
+
+        <li>
+          A twiddle factor is a coefficient constant that is precomputed and multiplied with the real data. This is relevant to the recursive Cooley-Tukey (actually, really Gauss) algorithm for doing FFT (instead of the O(<var>N<sup>2</<sup></var>) DFT).
+        </li>
+        <li>
+          There are a bunch of other tricks to speed up the FFT, like bit twiddling techniques (note: this is not related to twiddle factors described above) on the vector indices to reduce intermediate computations. Generally, this is useful to in-place FFTs (see definition in point above), which are quite challenging to optimize. This is because the destination address being written to does not necessarily swap with the source value being used for the computation. Hence, this requires a permutation computation that trades-off runtime for savings in memory usage. Unfortunately, these permutations can prevent the compiler from recognizing "shared code" in these recursive calls to the FFT algorithm, such as reuse of trigonometric constants. One example is doing a bit-reversal permutation. E.g. FFT-8 inputs can be arranged in natural order, i.e. [0,1,2,3,4,5,6,7]. Each of those indices can be represeted as a 3b number, i.e. [000,001,010,011,100,101,110,111]. By doing a bit-reversal on those 3b, we can compute a new permutation which looks like [000,100,010,110,001,101,011,111], which is [0,4,2,6,1,5,3,7]. Note how this bit-reversal technique has collected all the even indices to the front, and odd-indices to the back. This guarantees the correctness of executing the recursive FFT algorithm, and saves computation time for index calculation.
+        </li>
+
+        <li>
+          Lastly there are some very useful properties of the FFT that make it crucial for modern applications. The first is that the DFT isn't special in and of itself, rather it's a member of a family of operations called Finite Length Orthogonal Transforms, and for a subset of that family the FFT algorithm can be tweaked to compute those other operations. One of the most popular is the DCT, or discrete cosine transform. This is used in almost every lossy compression codec.
+        </li>
+
+        <li>
+          Finally going back to that convolution issue you brought up, that is the operation used for some filtering (think blurring in images, among other tricks). For large filter lengths, the FFT can be used to implement them faster than linear convolution.  
+        </li>
+      </ul>
+
     </div><!-- /.container -->
 
     <footer class="blog-footer">
