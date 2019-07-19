@@ -48,6 +48,7 @@
 			        <li class="active"><a class="blog-nav-item active" href="blog.html">Blog</a></li>
 			        <li><a class="blog-nav-item" href="music.html">Music</a></li>
 			        <li><a class="blog-nav-item" href="scribbles.html">Scribbles</a></li>
+                    <!--<li><a class="blog-nav-item" href="reviews.html">Summaries</a></li>-->
 	           	</ul>
 	      	</div><!-- /.navbar-collapse -->
 	   	</div><!-- /.container-fluid -->
@@ -63,6 +64,66 @@
       <div class="row">
 
         <div class="col-sm-8 blog-main">
+
+          <div class="blog-post">
+            <h2 class="blog-post-title"><a name="anagram-prime">Handout-10</a></h2>
+            <p class="blog-post-meta">May 2019</p>
+
+            <p>
+              Inspired from <a href="https://web.stanford.edu/class/cs166/handouts/100 Suggested Final Project Topics.pdf" target="_blank">Handout-10 <img src="extlink.png"></a>,
+              Source code: <a href="https://github.com/sidmontu/handout-10" target="_blank">Github <img src="extlink.png"></a>
+            </p>
+
+            <h4><u><b>Range minimum queries (RMQ)</b></u></h4>
+
+            <p>
+              E.g. we have an array A of length N, and we want to find the
+              minimum element inside a subset of this array denoted by indices
+              <i>i</i> and <i>j</i>, where 0 &le; <i>i</i> &le; <i>j</i> &lt; N.
+              The simple, out-of-the-box solution is to iterate over elements
+              from indices <i>i</i> to <i>j</i>, and find the minimum. This has a
+              runtime complexity of O(N), and no preprocessing time, i.e. O(1)
+              runtime complexity.
+            </p>
+            
+            <p>
+              However, if A is <i>fixed/static</i>, we can do some preprocessing
+              such that we get better RMQ performance.
+            </p>
+
+            <p>Let's define a pair of runtime complexities that quantify each RMQ solution:
+            <ul>
+              <li>p(N) : runtime complexity of preprocessing.</li>
+              <li>q(N) : runtime complexity of each RMQ.</li>
+            </ul>
+            </p>
+
+            <p>In the simple solution with no preprocessing described above :
+            <ul>
+              <li>p(N) = O(1).</li>
+              <li>q(N) = O(N).</li>
+            </ul>
+            </p>
+
+            <p>
+              Another solution is to do complete preprocessing by building a
+              lookup table for all possible RMQ on the static array A. Since
+              <i>i</i> &le; <i>j</i>, this will build an upper-triangular NxN
+              matrix with a non-zero diagonal. Using dynamic programming (see
+              implementations on project github page), we can build this with a
+              runtime complexity of &Theta;(N<sup>2</sup>). Hence, for this
+              solution, the runtime complexities are:
+              <ul>
+                <li>p(N) = &Theta;(N<sup>2</sup>).</li>
+                <li>q(N) = O(1).</li>
+              </ul>
+            </p>
+
+            <p>See implementations <a href="https://github.com/sidmontu/handout-10/blob/master/src/rmq.py" target="_blank">here <img src="extlink.png"></a>.
+
+          </div>
+
+          <hr>
 
           <div class="blog-post">
             <h2 class="blog-post-title"><a name="anagram-prime">Anagram Checker</a></h2>

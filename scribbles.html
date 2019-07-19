@@ -48,6 +48,7 @@
 			        <li><a class="blog-nav-item" href="blog.html">Blog</a></li>
 			        <li><a class="blog-nav-item" href="music.html">Music</a></li>
 			        <li class="active"><a class="blog-nav-item active" href="scribbles.html">Scribbles</a></li>
+                    <!--<li><a class="blog-nav-item" href="reviews.html">Summaries</a></li>-->
 	           	</ul>
 	      	</div><!-- /.navbar-collapse -->
 	   	</div><!-- /.container-fluid -->
@@ -60,9 +61,12 @@
         <p class="lead blog-description">Quick cheatsheet/notes on small things that don't really deserve a long writeup.</p>
       </div>
 
+      <h3>Collection of little oddities in FPGA tools</h3>
+      <p>If you want to use the Xilinx FFT IP core in VivadoHLS, where you're repeatedly calling the HLS core function to evaluate on different vectors of data (not unrolled, since you might not want to instantiate many copies of the FFT core in hardware), then the HLS tool will give an incompatibility error on the interface data-type (ap_auto vs ap_fifo)
+
       <h3>Xilinx Tools</h3>
       <p>For some obscure reason, if Xilinx tools (e.g. Vivado) is in your $PATH, some C/C++ projects report build errors - I observed this error from trying to build Ettus RFNoC framework using PyBOMBs. Removing Xilinx tools from the $PATH in a fresh terminal does the trick.</p>
-
+      <p>Pynq Jupyter environment sometimes fails to load even the basic pynq overlay modules. If you see a "ValueError: bad marshal data", then perhaps there are corrupt compiled python module files (.pyc). I've fixed this once by running "(sudo) find /usr -name '*.pyc' -delete". <a href="https://stackoverflow.com/questions/30861493/how-to-fix-python-valueerrorbad-marshal-data">Stackoverflow link.</a></p>
       <br>
 
       <h3>Tensorpack custom DataFlow class</h3>
@@ -161,6 +165,42 @@
       <h3>Tensorflow visualizing the graph</h3>
       <p><a href="https://www.tensorflow.org/guide/graphs#visualizing_your_graph">https://www.tensorflow.org/guide/graphs#visualizing_your_graph</a></p>
       <p>To see the graph of the model you're training, run tensorbord --logdir <path_to_where_graph_is_saved>, and load in browser at port 6006 (e.g. localhost:6006)</p>
+
+      <h3>Compilers</h3>
+      <p>From: <a href="http://venge.net/graydon/talks/CompilerTalk-2019.pdf">http://venge.net/graydon/talks/CompilerTalk-2019.pdf</a></p>
+      <p><a href="https://www.clear.rice.edu/comp512/Lectures/Papers/1971-allen-catalog.pdf">Frances Allen "A Catalogue of Optimizing Transformations" (1971 paper)</a>. Write 8 passes to get ~80% best-case performance (used by many modern compilers). They are:
+      <ul>
+        <li>Inline</li>
+        <li>Unroll/Vectorize</li>
+        <li>Common Subexpression Elimination</li>
+        <li>Dead Code Elimination</li>
+        <li>Code Motion</li>
+        <li>Constant Fold</li>
+        <li>Peephole</li>
+      </ul>
+      </p>
+
+      <h3>Support vector machines</h3>
+      <p>Notes from Caltech lecture on SVMs: <a href="https://www.youtube.com/watch?v=eHsErlPJWUU">https://www.youtube.com/watch?v=eHsErlPJWUU</a></p>
+      <ul>
+        <li>Goal: maximize the "margin". Solution is obtained analytically.</li>
+        <li>"Fat" margin (yellow area below) is intuitively better for doing classification:
+        <br><img src="svm_example.png" width="300px"/></li>
+        <li>
+          Dichotomies of lines of points in a plane (growth function):<br><img src="dichotomy_example.png" width="300px"/><br>
+          3 points have 2^3 = 8 dichotomies. I.e. there are 8 lines we can draw such that each data-point is labeled "X" or "O" in 8 different ways. If all 3 points are collinear (lie on the same line), then "XOX" and "OXO" are not valid dichotomies, since we can't create a valid line that can do the 'XO' binary classification on the points. See example below:<br>
+          <img src="dichotomy_example2.png" width="200px"/><br>
+          Hence, there are at least 6 dichotomies for 3 points, i.e. less than 2^3 dichotomies.
+        </li>
+        <li>However, the growth of the number of dichotomies can get further restricted if we introduce another constraint on the "fatness" of the margin. The fatter the margin, the fewer the number of valid dichotomies, and the more confidence we can have on the out-of-sample error (i.e. validation error) being better. That is, if we maximize the margin when trying to find the classification boundary, we are inherently reducing the out-of-sample error as well.</li>
+      </ul>
+
+      <h3>Kernel Methods</h3>
+      <p>Notes from Caltech lecture on kernel methods: <a href="https://www.youtube.com/watch?v=XUj5JbQihlU">https://www.youtube.com/watch?v=XUj5JbQihlU</a></p>
+      <ul>
+        <li></li>
+        <li></li>
+      </ul>
 
     </div><!-- /.container -->
 
