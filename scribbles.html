@@ -61,6 +61,18 @@
         <p class="lead blog-description">Quick cheatsheet/notes on small things that don't really deserve a long writeup.</p>
       </div>
 
+      <h3>Dotfiles management</h3>
+      <p>My dotfiles: <a href="https://github.com/sidmontu/dotfiles" target="_blank">https://github.com/sidmontu/dotfiles</a>.</p>
+      <p>I followed this tutorial: <a href="https://www.atlassian.com/git/tutorials/dotfiles" target="_blank">https://www.atlassian.com/git/tutorials/dotfiles</a></p>
+      <p>On a new system, inside home directory, run:
+      <ol>
+        <li>echo ".cfg" &gt;&gt; .gitignore</li>
+        <li>git clone --bare https://github.com/sidmontu/dotfiles.git $HOME/.cfg</li>
+        <li>alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'</li>
+        <li>config checkout</li>
+      </ol>
+      </p>
+
       <h3>UG documentations for Vivado Tools / Related</h3>
       <p><a href="https://buildmedia.readthedocs.org/media/pdf/pynq/v2.4/pynq.pdf" target="_blank">PYNQ</a> -- Holy grail of the PYNQ software framework.</p>
       <p><a href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2018_3/ug902-vivado-high-level-synthesis.pdf" target="_blank">UG902</a> -- High-level synthesis (details about HLS data-types, IP cores, pragmas, more)</p>
