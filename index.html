@@ -13,7 +13,47 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/blog.css" rel="stylesheet">
+    <link href="css/image_gallery.css" rel="stylesheet">
 
+    <script>
+      function openModal() {
+        document.getElementById("myModal").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+      }
+
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        captionText.innerHTML = dots[slideIndex-1].alt;
+      }
+
+    </script>
   </head>
 
   <body onload="typer1();">
@@ -161,6 +201,28 @@
 		</div>
 	</div>
 
+    <div id="myModal" class="modal">
+      <span class="close cursor" onclick="closeModal()">&times;</span>
+      <div class="modal-content">
+        <div class="mySlides">
+          <div class="numbertext">1 / 2</div>
+          <img src="graduation1.jpg" style="height:505;width:525px;">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">2 / 2</div>
+          <img src="graduation2.jpg" style="height:505;width:525px;">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        <div class="caption-container">
+          <p id="caption"></p>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
     <hr>
     	<div class="col-md-3">
@@ -174,7 +236,8 @@
             <!--Phone: +61 41177-1811<br>-->
 			E-mail: sidmontu AT gmail.com<br>	
 			<br>
-			<strong>Social Media <img src="extlink.png"></strong><br>
+			<strong>Elsewhere <img src="extlink.png"></strong><br>
+			<a href="https://github.com/sidmontu" target="_blank"><img src="github.png" width=20 height=20 alt="sid-github"></a>
 			<a href="http://www.linkedin.com/pub/siddhartha/64/490/632" target="_blank"><img src="linkedin.png" width=20 height=20 alt="sid-linkedin"></a>
 			<a href="https://twitter.com/sidmontu" target="_blank"><img src="twitter.png" width=20 height=20 alt="sid-twitter"></a>
 			<a href="https://instagram.com/sidmontu" target="_blank"><img src="instagram_icon.png" width=20 height=20 alt="sid-instagram"></a>
@@ -184,6 +247,14 @@
 			<h3>News</h3>
 			<div style="height: 180px;overflow:scroll;">
 				<table>
+                    <tr>
+                      <td valign="top"><strong>24/07/19</strong>: </td><td>&nbsp;</td>
+                      <td><span onclick="openModal();currentSlide(1)"><a href="#">Graduation collage!</a></span></td>
+                    </tr>
+                    <tr>
+                      <td valign="top"><strong>02/04/19</strong>: </td><td>&nbsp;</td>
+                      <td>Added a new 'Scribbles' page to document oddities, or useful links, that I found during my day-to-day project developments.</td>
+                    </tr>
                     <tr>
                       <td valign="top"><strong>14/03/19</strong>: </td><td>&nbsp;</td>
                       <td>Revisions accepted and hard-bound thesis submitted! (Almost) officially a PhD graduate now - only a convocation to look forward to!</td>
