@@ -60,6 +60,10 @@
         <h1 class="blog-title">Scribbles</h1>
         <p class="lead blog-description">Quick cheatsheet/notes on small things that don't really deserve a long writeup.</p>
       </div>
+    
+      <h3>Regex back-referencing</h3>
+      <p>Very useful for speeding up tedious tasks, e.g. creating verilog testbenches requires lots of declaring wires when connecting up the interface for the DUT. e.g. module Top ( a, b, c ), in the testbench we want to instantiate Top DUT ( .a(a), .b(b), .c(c) ), which can be done by a single well-constructed regex command. In vim-regex, to capture a matched string, you can do a visual select and use %s/\(YOUR_REGEX_TO_MATCH\)/\.\1(\1)/g. Here, your regexc match is capturing groups, and you are back-referencing it using \1.</p>
+      <p>Another example: "James Bond" use s/\(.*\) \(.*\)/I'm \2, \1 \2/g, which will produce "I'm Bond, James Bond".</p>
 
       <h3>Dotfiles management</h3>
       <p>My dotfiles: <a href="https://github.com/sidmontu/dotfiles" target="_blank">https://github.com/sidmontu/dotfiles</a>.</p>
