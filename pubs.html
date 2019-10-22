@@ -47,6 +47,35 @@
 		<a href="https://scholar.google.com.sg/citations?user=tRI56rsAAAAJ&hl=en" target="_blank"><img src="gscholar_logo.jpg" width="30" height="30"> Google Scholar Profile <img src="extlink.png"></a>
 		<hr>
             <p>
+	 			<a name="DACO_FPT2018" href="pubs_pdfs/daco.pdf">DaCO: A High-Performance Token Dataflow Coprocessor Overlay for FPGAs</a><br>
+				<b><u>Siddhartha</u></b>, Nachiket Kapre<br><em>International Conference on Field-Programmable Technology</em>, December 2018 
+	 		</p>
+ 			<div class="expandableNote" onclick="expandText('daco_abstract_fpt2018');">
+ 				<em><b>Abstract (click to expand/hide)</b></em> <br>
+ 				<div id="daco_abstract_fpt2018">
+					<p>
+                      Dataflow computing architectures exploit dynamic parallelism at the fine granularity of individual operations and provide a pathway to overcome the performance and energy limits of conventional von Neumann models. In this vein, we present DaCO (Dataflow Coprocessor FPGA Overlay), a high-performance compute organization for FPGAs to deliver up to 2.5× speedup over existing dataflow alternatives. Historically, dataflow-style execution has been viewed as an attractive parallel computing paradigm due to the self-timed, decentralized nature of implementation of dataflow dependencies and an absence of sequential program counters. However, realising high-performance dataflow computers has remained elusive largely due to the complexity of scheduling this parallelism and data communication bottlenecks. DaCO achieves this by (1) supporting large-scale (1000s of nodes) out-of-order scheduling using hierarchical lookup, (2) priority-aware routing of dataflow dependencies using the efficient Hoplite-Q NoC, and (3) clustering techniques to exploit data locality in the communication network organization. Each DaCO processing element is a programmable soft processor and it communicates with others using a packet-switching network-on-chip (PSNoC). We target the Arria 10 AX115S FPGA to take advantage of the hard floating-point DSP blocks, and maximize performance by multipumping the M20K Block RAMs. Overall, we can scale DaCO to 450 processors operating at an fmax of 250 MHz on the target platform. Each soft processor consumes 779 ALMs, 4 M20K BRAMs, and 3 hard floating-point DSP blocks for optimum balance, while the on-chip communication framework consumes &lt;15% of the on-chip resources.
+					</p>
+ 				</div>
+ 			</div>			
+	 		<hr>
+
+            <p>
+				(POSTER)<br>
+	 			<a name="Perturbation_FPT2018" href="pubs_pdfs/perturbation.pdf">Simultaneous Inference and Training Using On-FPGA Weight Perturbation Techniques</a><br>
+				<b><u>Siddhartha</u></b>, Steven Wilton, David Boland, Barry Flower, Perry Blackmore, Philip Leong<br><em>International Conference on Field-Programmable Technology</em>, December 2018 
+	 		</p>
+ 			<div class="expandableNote" onclick="expandText('perturb_abstract_fpt2018');">
+ 				<em><b>Abstract (click to expand/hide)</b></em> <br>
+ 				<div id="perturb_abstract_fpt2018">
+					<p>
+                      We present an FPGA-optimized implementation of online neural network training based on weight perturbation (WP) techniques. When compared to the classic backpropagation (BP) algorithm, WP is capable of delivering competitive performance while occupying minimal area resources. Perturbation-based methods have been demonstrated as viable training techniques and are suitable for on-line learning applications which adapt to changing conditions. The viability of applying WP-based on-chip training for low-precision fixed-point hardware is demonstrated on two distinct MLP benchmarks: the Iris dataset classification network and an RF anomaly detector. When synthesized to a Xilinx Kintex-7 XC7K410T FPGA, WP offers a 3-10x area savings with &lt;1% degradation in accuracy compared with backpropagation. Compared with an inference-only implementation the overhead of introducing on-chip learning is approximately 30%.
+					</p>
+ 				</div>
+ 			</div>			
+	 		<hr>
+
+            <p>
 	 			<a name="FCCM2018" href="pubs_pdfs/hopq.pdf">Hoplite-Q: Priority-Aware Routing in FPGA Overlay NoCs</a><br>
 				<b><u>Siddhartha</u></b>, Nachiket Kapre<br><em>26th IEEE International Symposium Field-Programmable Custom Computing Machines</em>, May 2018 
 	 		</p>
