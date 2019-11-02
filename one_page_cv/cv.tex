@@ -1,0 +1,340 @@
+% FortySecondsCV LaTeX template
+% Copyright © 2019 René Wirnata <rene.wirnata@pandascience.net>
+% Licensed under the 3-Clause BSD License. See LICENSE file for details.
+%
+% Attributions
+% ------------
+% * fortysecondscv is based on the twentysecondcv class by Carmine Spagnuolo 
+%   (cspagnuolo@unisa.it), released under the MIT license and available under
+%   https://github.com/spagnuolocarmine/TwentySecondsCurriculumVitae-LaTex
+% * further attributions are indicated immediately before corresponding code
+
+
+%-------------------------------------------------------------------------------
+%                             ADDITIONAL PACKAGES
+%-------------------------------------------------------------------------------
+\documentclass[
+  a4paper, 
+%   showframes,
+%   vline=2.2em,
+%   maincolor=cvgreen,
+%   sectioncolor=red,
+%   subsectioncolor=orange,
+%   itemtextcolor=black!80,
+%   sidebarwidth=0.4\paperwidth,
+%   topbottommargin=0.03\paperheight,
+%   leftrightmargin=20pt,
+%   proilepicsize=4.5cm,
+]{fortysecondscv}
+
+% improve word spacing and hyphenation
+\usepackage{microtype}
+\usepackage{ragged2e}
+
+% take care of proper font encoding
+\ifxetexorluatex
+	\usepackage{fontspec}
+	\defaultfontfeatures{Ligatures=TeX}
+% \newfontfamily\headingfont[Path = fonts/]{segoeuib.ttf} % local font
+\else
+	\usepackage[utf8]{inputenc}
+	\usepackage[T1]{fontenc}
+% \usepackage[sfdefault]{noto} % use noto google font
+\fi
+
+% enable mathematical syntax for some symbols like \varnothing
+\usepackage{amssymb}
+
+% bubble diagram configuration
+\usepackage{smartdiagram}
+\smartdiagramset{
+  % defaut font size is \large, so adjust to harmonize with sidebar layout
+  bubble center node font = \footnotesize,
+  bubble node font = \footnotesize,
+  % default: 4cm/2.5cm; make minimum diameter relative to sidebar size
+  bubble center node size = 0.4\sidebartextwidth,
+  bubble node size = 0.25\sidebartextwidth,
+  distance center/other bubbles = 1.5em,
+  % set center bubble color
+  bubble center node color = maincolor!70,
+  % define the list of colors usable in the diagram
+  set color list = {maincolor!10, maincolor!40,
+  maincolor!20, maincolor!60, maincolor!35},
+  % sets the opacity at which the bubbles are shown
+  bubble fill opacity = 0.8,
+}
+
+
+%-------------------------------------------------------------------------------
+%                            PERSONAL INFORMATION
+%-------------------------------------------------------------------------------
+%% mandatory information
+% your name
+\cvname{Siddhartha}
+% job title/career
+\cvjobtitle{FPGAs / Machine Learning\\[0.2em] Engineer}
+
+%% optional information
+% profile picture
+\cvprofilepic{pics/profile.png}
+
+% short address/location, use \newline if more than 1 line is required
+\cvaddress{Sydney, Australia}
+% phone number
+% \cvphone{+61 411 77 1811}
+% personal website
+\cvsite{https://sidmontu.github.io}
+% email address
+\cvmail{sidmontu@gmail.com}
+% github
+\cvgithub{https://github.com/sidmontu/}{Github}
+% linkedin 
+\cvlinkedin{https://www.linkedin.com/in/siddhartha-63249064/}{LinkedIn}
+% google scholar 
+% \cvscholar{https://scholar.google.com/citations?user=tRI56rsAAAAJ}{Google Scholar}
+
+%-------------------------------------------------------------------------------
+%                              SIDEBAR 1st PAGE
+%-------------------------------------------------------------------------------
+% add more profile sections to sidebar on first page
+\addtofrontsidebar{
+	% include gosquare national flags from https://github.com/gosquared/flags;
+	% naming according to ISO 3166-1 alpha-2 country codes
+	\graphicspath{{pics/flags/}}
+
+    \profilesection{Personal Statement}
+	\aboutme{
+        Postdoctoral researcher with a strong academic track record looking for
+        a fresh challenge. I am especially interested in hardware design and/or
+        machine-learning related projects, and I have relevant experience in
+        both areas. Lifelong learner open to picking up new technology stacks
+        if needed, and ready to work hard towards ambitious targets.
+	}
+
+	% social network accounts incl. proper hyperlinks
+% 	\profilesection{Social Network}
+% 		\begin{icontable}{2.5em}{1em}
+% 		    % overleaf still not supports Academicons and FontAwesome5 for XeLaTeX, which contain the overleaf logl...unbelievable...
+% 			\social{\faGraduationCap}
+% 				{https://scholar.google.com/citations?user=tRI56rsAAAAJ/}
+% 				{Google Scholar}
+% 			\social{\faGithub}
+% 				{https://github.com/sidmontu/}
+% 				{Github}
+% 			\social{\faGlobe}
+% 				{https://sidmontu.github.io/}
+% 				{Personal Website}
+% 		\end{icontable}
+
+%	\profilesection{Languages}
+%		\pointskill{\flag{CN.png}}{Chinese}{5}
+%		\pointskill{\flag{DE.png}}{German}{3}
+%  	\pointskill{\flag{GB.png}}{English}{3}
+%  	\pointskill{\flag{FR.png}}{French}{3}
+
+	\profilesection{Hardware}
+        \skill{\faUniversity}{Good foundational experience}
+        \skill{\faKeyboard}{Strong Verilog coder}
+        \skill{\faWrench}{Familiar with FPGA tools}
+        \skill{\faPlay}{VivadoHLS / PYNQ Framework}
+        \skill{\faLightbulb}{Learning SystemVerilog/UVM}
+
+	\profilesection{Software}
+        \skill{\faLinux}{Experienced Linux user, comfortable with command-line tools.}
+        \skill{\faCuttlefish}{Experienced C/C++ programmer}
+        \skill{\faPython}{Python: preferred scripting environment}
+        \skill{\faCogs}{Familiar with Tensorflow/PyTorch machine learning frameworks}
+}
+
+
+%-------------------------------------------------------------------------------
+%                              SIDEBAR 2nd PAGE
+%-------------------------------------------------------------------------------
+\addtobacksidebar{
+	
+	\profilesection{Diagrams}
+	\chartlabel{Bubble Diagram}
+	\begin{figure}\centering
+		\smartdiagram[bubble diagram]{
+			\textcolor{white}{\textbf{Being a}} \\ 
+			\textcolor{white}{\textbf{Panda}}, % center bubble	
+			\textcolor{black!90}{Eating},
+			\textcolor{black!90}{Sleeping},
+			\textcolor{black!90}{Rolling},
+			\textcolor{black!90}{Playing},
+			\textcolor{black!90}{Chilling}
+		}
+	\end{figure}
+
+	\chartlabel{Wheel Chart}
+
+	\wheelchart{4em}{2em}{%
+  	20/3em/maincolor!50/Chill,
+  	15/3em/maincolor!15/Play,
+  	30/4em/maincolor!40/Sleep,
+  	20/3em/maincolor!20/Eat
+	}
+
+	\profilesection{Barskills}
+	\barskill{\faSkyatlas}{Wearing asian rice hats}{60}
+	\barskill{\faImage}{Playing Chess}{30}
+	\barskill{\faMusic}{Playing the bamboo flute}{50}
+
+	\profilesection{Memberships}
+	\begin{memberships}
+		\membership[4em]{pics/logo.png}{PandaScience.net}
+		\membership[4em]{pics/logo.png}{Some long text spanning over more than
+			only one line}
+		\membership[4em]{pics/logo.png}{\rule{\linewidth}{1pt}}
+	\end{memberships}
+}
+
+
+%-------------------------------------------------------------------------------
+%                         TABLE ENTRIES RIGHT COLUMN
+%-------------------------------------------------------------------------------
+\begin{document}
+
+\makefrontsidebar
+
+\cvsection{Work Experience}
+\begin{cvtable}[3]
+	\cvitem{2017 - Present}{Postdoctoral Research Associate}{University of Sydney}{
+        \textit{Main Project: High-speed machine learning for RF applications} \\
+        This project explores the feasibility of applying and implementing deep
+        learning models on FPGAs for doing \textit{real-time} radio-frequency
+        spectral prediction. I serve as the lead technical engineer on this
+        project, and have built a software-framework for automating the
+        end-to-end flow of modeling, training, and implementing convolutional
+        neural networks on FPGAs. Topics/technology-stacks learnt during the course
+        of the project: Python, Tensorflow/Tensorpack, VivadoHLS, low-precision
+        neural networks. \\
+        \textit{Other roles}: Project supervision / guidance to undergraduate
+        students doing their final-year projects, involvement in other research
+        projects in the lab.
+    }
+	\cvitem{Jun -- Oct 2012}{Undergraduate Research Assistant}{Imperial College London}{
+        Under the University Research Opportunities Program (UROP), I embarked
+        on a summer project under the supervision of
+        \href{https://nachiket.github.io}{Nachiket Kapre}, which eventually
+        served as a foundation to my PhD research. Some of the work developed
+        during this stint was eventually published as a short paper in the 2014
+        IEEE Field-Programmable Custom Computing Machines conference
+        proceedings.
+    }
+\end{cvtable}
+
+
+\cvsection{Education}
+\begin{cvtable}[1.5]
+	\cvitem{2013 -- 2019}{Doctor of Philosophy}{Nanyang Technological University, Singapore}{
+        \textit{Dissertation: Dataflow Optimized Overlays for FPGAs} \\
+        This thesis introduces Dataflow Coprocessor Overlay (DaCO), a token
+        dataflow overlay architecture tuned for FPGAs. DaCO pushes the
+        performance boundaries of existing designs by exploiting static
+        criticality information to support out-of-order execution inside each
+        processing element. When compared to in-order designs, DaCO delivers up
+        to 2.4$\times$ improvement in performance.
+    }
+	\cvitem{2009 -- 2012}{Undergraduate}{Imperial College London}{
+        BEng in Electrical \& Electronics Engineering, graduated with a second-upper class honors degree.
+    }
+\end{cvtable}
+
+
+% \cvsubsection{Study}
+% \begin{cvtable}[1.5]
+% 	\cvitem{2006 -- 2008}{Master Studies Panda Science}{Panda Academy}
+% 		{Focus: Advanced rice hat studies and nouveau rain-reflecting cover
+% 		materials.}
+% 	\cvitem{}{Master Theses ($\varnothing\,	1,0$)}{Asian Rice Hat Institute}
+% 		{Impact on solar radiation onto rice hat cover materials with special
+% 		attention to water resistance.}
+% 	\cvitem{2003 -- 2006}{Bachelor Studies PandaScience}{Panda Academy}
+% 		{Focus: Bamboo morphology and its usage in different craftmanships.}
+% 	\cvitem{}{Bachelor Theses ($\varnothing\,	1,0$)}{Bamboo Institute}
+% 		{The bambo flute: An underestimated instrument in orchestras?}
+% \end{cvtable}
+
+
+\cvsection{Notable Publications\hfill {\small\href{https://scholar.google.com/citations?user=tRI56rsAAAAJ}{\faGraduationCap\hspace{0.05in}Google Scholar}}}
+\begin{cvtable}
+    \cvpubitem{DaCO: A High-Performance Token Dataflow Coprocessor Overlay for FPGAs}{Siddhartha, Nachiket Kapre}
+		{International Conference on Field-Programmable Technology}{2018}
+    \cvpubitem{Hoplite-Q: Priority-Aware Routing in FPGA Overlay NoCs}{Siddhartha, Nachiket Kapre}{IEEE 26th Annual International Symposium on Field-Programmable Custom Computing Machines}{2018}
+    \cvpubitem{Long Short-Term Memory for Radio Frequency Spectral Prediction and its Real-Time FPGA Implementation}{Siddhartha, Yee Hui Lee, Duncan Moss, Julian Faraone, Perry Blackmore, Daniel Salmond, David Boland, and Philip Leong}{IEEE Military Communications Conference (MILCOM)}{2018}
+    \cvpubitem{Real-time Automatic Modulation Classification (Poster)}{Stephen Tridgell, David Boland, Philip Leong, Siddhartha}{International Conference on Field-Programmable Technology}{2019}
+\end{cvtable}
+
+\cvsection{Awards}
+\begin{cvtable}
+    \cvitem{2013}{Richard Newton Young Fellow Award}{Design Automation Conference}{}
+\end{cvtable}
+
+
+% \cvsection{Extra-Curricular Activities}
+% \begin{cvtable}
+% 	\cvitemshort{Relaxing}{Master the fine art of relaxing everywhere}
+% 	\cvitemshort{Music}{Playing the bamboo flute in the 1st Panda Orchestra}
+% 	\cvitemshort{Education}{Teaching young pandas to be more panda-like}
+% \end{cvtable}
+
+
+% \newpage
+% \makebacksidebar
+% 
+% 
+% \cvsection{section}
+% \cvsubsection{Subsection}
+% \begin{cvtable}
+% 	\cvitem{<dates>}{<cv-item title>}{<location>}{<optional: description>}
+% \end{cvtable}
+% 
+% \cvsection{cvitem}
+% \cvsubsection{Multi-line with longer description}
+% \begin{cvtable}
+% 	\cvitem{date}{Description}{location}{Some longer and more detailed 
+% 		description, that takes two lines	of space instead of only one.}
+% 	\cvitem{date}{Description}{location}{Some longer and more detailed 
+% 		description, that takes two lines	of space instead of only one.}
+% 	\cvitem{date}{Description}{location}{Some longer and more detailed 
+% 		description, that takes two lines	of space instead of only one.}
+% \end{cvtable}
+% 
+% \cvsubsection{One-line without description}
+% \begin{cvtable}
+% 	\cvitem{Award}{One-line description}{Sponsor}{}
+% 	\cvitem{Award}{One-line description}{Sponsor}{}
+% 	\cvitem{Award}{One-line description}{Sponsor}{}
+% \end{cvtable}
+% 
+% \cvsection{cvitemshort}
+% \cvsubsection{One-line}
+% \begin{cvtable}
+% 	\cvitemshort{Key}{Some further description}
+% 	\cvitemshort{Key}{Some further description}
+% 	\cvitemshort{Key}{Some further description}
+% \end{cvtable}
+% 
+% \cvsubsection{Multi-line with longer description}
+% \begin{cvtable}
+% 	\cvitemshort{Key}{Some further description. Can fill even more than
+% 		only one single line while still keeping the correct indendation level.}
+% 	\cvitemshort{Key}{Some further description. Can fill even more than
+% 		only one single line while still keeping the correct indendation level.}
+% 	\cvitemshort{Key}{Some further description. Can fill even more than
+% 		only one single line while still keeping the correct indendation level.}
+% \end{cvtable}
+% 
+% \cvsection{cvpubitem}
+% \begin{cvtable}
+% 	\cvpubitem{Publication title}{Authors}{Journal}{Year}
+% 	\cvpubitem{Publication title}{Authors}{Journal}{Year}
+% 	\cvpubitem{Publication title that is spanning over multiple lines and still
+% 		does not look too bad}{Authors}{Journal}{Year}
+% \end{cvtable}
+
+\vspace{-0.1in}
+\cvsignature
+
+\end{document} 
