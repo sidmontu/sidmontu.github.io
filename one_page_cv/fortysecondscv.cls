@@ -486,7 +486,7 @@
 
 \newcommand{\cvsignature}{
 	\vfill
-    {\scriptsize\color{maincolor!90}\today \hfill CV template adapted from: \href{https://github.com/PandaScience/FortySecondsCV}{FortySecondsCV}}
+    {\scriptsize\color{maincolor!90}\today \hfill CV \LaTeX~template adapted from: \href{https://github.com/PandaScience/FortySecondsCV}{FortySecondsCV}}
 }
 
 

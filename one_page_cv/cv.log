@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.8.10)  2 NOV 2019 18:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.8.10)  2 NOV 2019 18:28
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1312,6 +1312,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 271--273
 
 LaTeX Font Info:    Font shape `T1/ClearSans-LF/m/n' will be
 (Font)              scaled to size 7.0pt on input line 338.
+LaTeX Font Info:    Font shape `T1/ClearSans-LF/m/n' will be
+(Font)              scaled to size 5.0pt on input line 338.
 [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./pics/
@@ -1325,11 +1327,11 @@ Package rerunfilecheck Info: File `cv.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 34741 strings out of 492616
- 680969 string characters out of 6129481
- 771857 words of memory out of 5000000
- 38077 multiletter control sequences out of 15000+600000
- 604512 words of font info for 107 fonts, out of 8000000 for 9000
+ 34744 strings out of 492616
+ 681041 string characters out of 6129481
+ 771868 words of memory out of 5000000
+ 38079 multiletter control sequences out of 15000+600000
+ 610375 words of font info for 109 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,15n,74p,789b,1151s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/fontawesome5/fa5brands1.e
@@ -1344,10 +1346,10 @@ Sans-Regular.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/fontawe
 some5/FontAwesome5Brands-Regular.pfb></usr/local/texlive/2019/texmf-dist/fonts/
 type1/public/fontawesome5/FontAwesome5Free-Solid.pfb></usr/local/texlive/2019/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on cv.pdf (1 page, 1737968 bytes).
+Output written on cv.pdf (1 page, 1738099 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  55 compressed objects within 1 object stream
  2 named destinations out of 1000 (max. 500000)
- 23166 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 23678 words of extra memory for PDF output out of 24883 (max. 10000000)
 
