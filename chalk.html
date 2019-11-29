@@ -60,6 +60,40 @@
         <h1 class="blog-title">The Chalkboard</h1>
         <p class="lead blog-description">Little notes on things that don't really deserve a long writeup.</p>
       </div>
+
+      <h3>ap_uint/ap_int behaviour in VivadoHLS</h3>
+      <p>Small program that demonstrates HLS data-types behaviour with ap_int and ap_uint data-types:</p>
+      <pre class="ccode">
+        #include &lt;stdio.h&gt;
+        #include "ap_int.h"
+        <newline>
+        int <b>main</b>()
+        {
+        &nbsp;&nbsp;&nbsp;&nbsp;ap_int&lt;<font color="red">8</font>&gt; acc = 12;
+        &nbsp;&nbsp;&nbsp;&nbsp;ap_uint&lt;<font color="red">8</font>&gt; res = 0;
+        <newline>
+        &nbsp;&nbsp;&nbsp;&nbsp;res += acc;
+        &nbsp;&nbsp;&nbsp;&nbsp;<font color="red">printf</font>("res = %d\n",(<font color="red">int</font>)res);
+        <newline>
+        &nbsp;&nbsp;&nbsp;&nbsp;acc = -6;
+        &nbsp;&nbsp;&nbsp;&nbsp;res += acc;
+        &nbsp;&nbsp;&nbsp;&nbsp;<font color="red">printf</font>("res = %d\n",(<font color="red">int</font>)res);
+        <newline>
+        &nbsp;&nbsp;&nbsp;&nbsp;acc = -8;
+        &nbsp;&nbsp;&nbsp;&nbsp;res += acc;
+        &nbsp;&nbsp;&nbsp;&nbsp;<font color="red">printf</font>("res = %d\n",(<font color="red">int</font>)res);
+        <newline>
+        &nbsp;&nbsp;&nbsp;&nbsp;return 0;
+        }
+      </pre>
+      <p>Output result is:</p>
+      <pre class="ccode">
+        res = 12
+        res = 6
+        res = 254
+      </pre>
+
+      <p>Conclusion: The accummulation happens correctly in signed integer, but the number is stored and printed as an unsigned integer.</p>
     
       <h3>Taskwarrior</h3>
       <p>Wow, this was hard to setup. Some steps that are not documented, especially for allowing a TW client on a different machine to sync with the server (e.g. some server on the VPN):</p>

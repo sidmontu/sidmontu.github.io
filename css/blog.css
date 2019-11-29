@@ -197,3 +197,20 @@ h6, .h6 {
 .t-table td:empty {
   valign: middle;
 }
+
+.ccode {
+  background-color: #faeedc;
+  color: #000066;
+}
+
+pre {
+  border: 2px solid #cccccc;
+  background: #e7e7e7;
+  background-color: rgb(231, 231, 231);
+  padding: 10px 10px 10px 10px;
+  margin-left: 0em;
+  color: #000066;
+  width: 400px;
+  white-space: pre-line;
+}
+
