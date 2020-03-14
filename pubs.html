@@ -35,7 +35,7 @@
 			        <li class="active"><a class="blog-nav-item active" href="pubs.html">Publications</a></li>
 			       	<li><a class="blog-nav-item" href="blog.html">Blog</a></li>
 			        <li><a class="blog-nav-item" href="music.html">Music</a></li>
-			        <li><a class="blog-nav-item" href="chalk.html">The Chalkboard</a></li>
+			        <li><a class="blog-nav-item" href="cache.html">Cache</a></li>
                     <!--<li><a class="blog-nav-item" href="reviews.html">Summaries</a></li>-->
 	           	</ul>
 	      	</div><!-- /.navbar-collapse -->
@@ -46,6 +46,50 @@
 		<h2>PUBLICATIONS</h2>
 		<a href="https://scholar.google.com.sg/citations?user=tRI56rsAAAAJ&hl=en" target="_blank"><img src="gscholar_logo.jpg" width="30" height="30"> Google Scholar Profile <img src="extlink.png"></a>
 		<hr>
+            <p>
+              <a name="RAW2020" href="pubs_pdfs/amc_raw20.pdf">Real-time Automatic Modulation Classification using RFSoC</a><br>
+				Stephen Tridgell, David Boland, Philip H.W. Leong, Ryan Kastner, Alireza Khodamoradi, <b><u>Siddhartha</u></b><br><em>27th Reconfigurable Architectures Workshop (RAW), co-located with IPDPS'20</em>, May 2020 (To be presented) 
+	 		</p>
+ 			<div class="expandableNote" onclick="expandText('amc_abstract_raw2020');">
+ 				<em><b>Abstract (click to expand/hide)</b></em> <br>
+ 				<div id="amc_abstract_raw2020">
+					<p>
+                      The computational complexity of deep learning has led to research efforts to reduce the computation required. The use of low precision is particularly effective on FPGAs as they are not restricted to byte addressable operations. Very low precision activations and weights can have a significant impact on the accuracy however. This work demonstrates by exploiting throughput matching that higher precision on certain layers can be used to recover this accuracy. This is applied to the domain of automatic modulation classification for radio signals leveraging the RF capabilities offered by the Xilinx ZCU111 RFSoC platform. The implemented networks achieve high-speed real-time performance with a classification latency of ~8us, and an operational throughput of 488k classifications per second. On the open-source RadioML dataset, we demonstrate how to recover 4.3% in accuracy with the same hardware usage with our technique.
+					</p>
+ 				</div>
+ 			</div>			
+	 		<hr>
+
+            <p>
+              (ACM BADGES: ARTIFACTS EVALUATED - FUNCTIONAL & RESULTS REPLICATED)<br>
+              <a name="FPGA2020" href="pubs_pdfs/luxor_fpga20.pdf">LUXOR: An FPGA Logic Cell Architecture for Eficient Compressor Tree Implementations</a><br>
+				Seyedramin Rasoulinezhad, <b><u>Siddhartha</u></b>, Hao Zhou, Lingli Wang, David Boland, Philip H.W. Leong<br><em>ACM/SIGDA International Symposium on Field-Programmable Gate Arrays (FPGA)</em>, February 2020 
+	 		</p>
+ 			<div class="expandableNote" onclick="expandText('luxor_abstract_fpga2020');">
+ 				<em><b>Abstract (click to expand/hide)</b></em> <br>
+ 				<div id="luxor_abstract_fpga2020">
+					<p>
+                      We propose two tiers of modifications to FPGA logic cell architecture to deliver a variety of performance and utilization benefits with only minor area overheads. In the first tier, we augment existing commercial logic cell datapaths with a 6-input XOR gate in order to improve the expressiveness of each element, while maintaining backward compatibility. This new architecture is vendor-agnostic, and we refer to it as LUXOR. We also consider a secondary tier of vendor-specific modifications to both Xilinx and Intel FPGAs, which we refer to as X-LUXOR+ and I-LUXOR+ respectively. We demonstrate that compressor tree synthesis using generalized parallel counters (GPCs) is further improved with the proposed modifications. Using both the Intel adaptive logic module and the Xilinx slice at the 65nm technology node for a comparative study, it is shown that the silicon area overhead is less than 0.5% for LUXOR and 5-6% for LUXOR+, while the delay increments are 1-6% and 3-9% respectively. We demonstrate that LUXOR can deliver an average reduction of 13-19% in logic utilization on micro-benchmarks from a variety of domains. BNN benchmarks benefit the most with an average reduction of 37-47% in logic utilization, which is due to the highly-efficient mapping of the XnorPopcount operation on our proposed LUXOR+ logic cells.
+					</p>
+ 				</div>
+ 			</div>			
+	 		<hr>
+
+            <p>
+				(POSTER)<br>
+	 			<a name="FPT2019" href="pubs_pdfs/amc_fpt2019.pdf">Real-Time Automatic Modulation Classification</a><br>
+				Stephen Tridgell, David Boland, Philip H.W. Leong, <b><u>Siddhartha</u></b><br><em>International Conference on Field-Programmable Technology</em>, December 2019 
+	 		</p>
+ 			<div class="expandableNote" onclick="expandText('amc_abstract_fpt2019');">
+ 				<em><b>Abstract (click to expand/hide)</b></em> <br>
+ 				<div id="amc_abstract_fpt2019">
+					<p>
+                      Deep learning based techniques have shown promising results over traditional hand-crafted methods for automatic modulation classification for radio signals. However, implementation of these deep learning models on specialized hardware can be challenging, as both latency and throughput performance are critical to achieving real-time response to over-the-air radio signals. In this work, we meet our targets by designing an optimized ternarized convolutional neural network that leverages the RF capabilities offered by the Xilinx ZCU111 RFSoC platform. The implemented networks achieve high-speed real-time performance with a classification latency of ~8us, and an operational throughput of 488k classifications per second. On the challenging open-source RadioML dataset, we achieve up to 81.1% accuracy, which is competitive to existing state-of-the-art software-only implementations.
+					</p>
+ 				</div>
+ 			</div>			
+	 		<hr>
+
             <p>
 	 			<a name="DACO_FPT2018" href="pubs_pdfs/daco.pdf">DaCO: A High-Performance Token Dataflow Coprocessor Overlay for FPGAs</a><br>
 				<b><u>Siddhartha</u></b>, Nachiket Kapre<br><em>International Conference on Field-Programmable Technology</em>, December 2018 
@@ -70,6 +114,19 @@
  				<div id="perturb_abstract_fpt2018">
 					<p>
                       We present an FPGA-optimized implementation of online neural network training based on weight perturbation (WP) techniques. When compared to the classic backpropagation (BP) algorithm, WP is capable of delivering competitive performance while occupying minimal area resources. Perturbation-based methods have been demonstrated as viable training techniques and are suitable for on-line learning applications which adapt to changing conditions. The viability of applying WP-based on-chip training for low-precision fixed-point hardware is demonstrated on two distinct MLP benchmarks: the Iris dataset classification network and an RF anomaly detector. When synthesized to a Xilinx Kintex-7 XC7K410T FPGA, WP offers a 3-10x area savings with &lt;1% degradation in accuracy compared with backpropagation. Compared with an inference-only implementation the overhead of introducing on-chip learning is approximately 30%.
+					</p>
+ 				</div>
+ 			</div>			
+	 		<hr>
+            <p>
+	 			<a name="MILCOM2018" href="pubs_pdfs/lstm_milcom18.pdf">Long Short-Term Memory for Radio Frequency Spectral Prediction and its Real-Time FPGA Implementation</a><br>
+				<b><u>Siddhartha</u></b>, Yee Hui Lee, Duncan J.M. Moss, Julian Faraone, Perry Blackmore, Daniel Salmond, David Boland, Philip H.W. Leong<br><em>2018 IEEE Military Communications Conference (MILCOM)</em>, October 2018 
+	 		</p>
+ 			<div class="expandableNote" onclick="expandText('lstm_abstract_milcom2018');">
+ 				<em><b>Abstract (click to expand/hide)</b></em> <br>
+ 				<div id="lstm_abstract_milcom2018">
+					<p>
+                    Reactive communication waveforms hosted in current generation tactical radios often fail to achieve good performance and resilience in highly dynamic and complex environments. Arguably, novel waveforms that can proactively adapt to anticipated channel conditions may better meet the challenges of the tactical environment. This motivates the ability to accurately predict spectral behaviour in real-time. A Long Short-Term Memory (LSTM) network is a type of recurrent neural network which has been extremely successful in dealing with time-dependent signal processing problems such as speech recognition and machine translation. In this paper, we apply it to the task of spectral prediction and present a module generator for a latency-optimised Field-Programmable Gate Array (FPGA) implementation. We show that our implementation obtains superior results to other time series prediction techniques including a naive predictor, moving average and ARIMA for the problem of radio frequency spectral prediction. For a single LSTM layer plus a fully-connected output layer with 32 inputs and 32 outputs, we demonstrate that a prediction latency of 4.3us on a Xilinx XC7K410T Kintex-7 FPGA is achievable.
 					</p>
  				</div>
  			</div>			
