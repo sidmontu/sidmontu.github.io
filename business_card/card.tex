@@ -1,0 +1,88 @@
+% !TEX TS-program = xelatex
+\documentclass[10pt,oneside,final]{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage[paperwidth=2in,paperheight=3.5in,margin=0cm,noheadfoot]{geometry}
+\usepackage{fontspec}          % load external fonts
+\usepackage{fontawesome}       % icon font
+\def\faSkype{\FA\symbol{"F17E}}
+\usepackage{graphicx}
+% load external font
+\setmainfont[Numbers={OldStyle,Monospaced}]{Fira Sans}
+\setsansfont{Fira Sans}
+\setmonofont{Fira Mono}
+\usepackage{anyfontsize}
+
+% load and configure tikz libraries
+\usetikzlibrary{matrix,positioning,calc}
+
+\usepackage{xcolor}                        % more colour options
+
+\definecolor{blue}{HTML}{67A1CF}  		% blue
+\definecolor{boldblue}{HTML}{096ECA}    % bold blue
+
+% define some lengths for internal spacing
+\newlength{\seplinewidth}    \setlength{\seplinewidth}{3.3cm}
+\newlength{\seplineheight}   \setlength{\seplineheight}{2pt}
+\newlength{\seplinedistance} \setlength{\seplinedistance}{-0.15cm}
+
+\newcommand{\altura}{.45cm}
+
+\usepackage{pgf}
+\usepackage{pgfpages}
+
+\pgfpagesdeclarelayout{boxed}
+{
+  \edef\pgfpageoptionborder{0pt}
+}
+{
+  \pgfpagesphysicalpageoptions
+  {%
+    logical pages=1,%
+  }
+  \pgfpageslogicalpageoptions{1}
+  {
+	border code=\pgfsetlinewidth{3pt}\color{boldblue}\pgfstroke,%
+    border shrink=\pgfpageoptionborder,%
+    resized width=1\pgfphysicalwidth,%
+    resized height=1\pgfphysicalheight,%
+    center=\pgfpoint{.5\pgfphysicalwidth}{.5\pgfphysicalheight}%
+  }%
+}
+
+\pgfpagesuselayout{boxed}
+
+\begin{document}
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \begin{tikzpicture}[x=1cm, y=-\altura, node distance=0,outer sep=0,inner sep=0]
+		\tikzstyle{nome}=[anchor=west, minimum height=\altura,minimum width=2in,text width=1.8in]
+
+      % definition of the actual layout
+		%\matrix[every node/.style={anchor=west,font=\large},anchor=west] (name) {
+		%	\node[nome]{\color{boldblue}SIDDHARTHA}; \\
+		%};
+		\node[nome] (name) {\color{boldblue}\large SIDDHARTHA};
+		\node[nome][below= -0.1cm of name] (hl1) {};
+		\draw[line width=\seplineheight,color=boldblue] (hl1)++(-\seplinewidth/1.45,0) -- ++(\seplinewidth,0);
+		\node[nome] (title) [below = -0.15cm of hl1] {\color{blue}\tiny Doctoral Student (Year 4)};
+		%\node[nome][below=\seplinedistance of title] (hl2) {};
+		%\draw[line width=1pt,color=blue] (hl2)++(-\seplinewidth/1.45,0) -- ++(\seplinewidth,0);
+		\node[nome] (inst1) [below = -0.15cm of title] {\color{blue}\tiny Hardware \& Embedded Systems Lab};
+		\node[nome] (inst) [below = -0.15cm of inst1] {\color{blue}\tiny NTU, Singapore};
+		\node[nome][below=\seplinedistance of inst] (hl3) {};
+		\draw[line width=1pt,color=blue] (hl3)++(-\seplinewidth/1.45,0) -- ++(\seplinewidth,0);
+		\node[nome] (web) [below = -0.15cm of hl3] {{\color{boldblue}\scriptsize \faGlobe}\color{blue}\fontsize{5}{6}\selectfont\ \ https://sidmontu.github.io};
+		\node[nome] (tele) [below = -0.15cm of web] {{\color{boldblue}\scriptsize \faPhone}\color{blue}\fontsize{5}{6}\selectfont\ \ +65 9857 4171};
+		\node[nome] (mail) [below = -0.15cm of tele] {{\color{boldblue}\scriptsize \faEnvelope}\color{blue}\fontsize{5}{6}\selectfont\ \ sidmontu@gmail.com};
+		\node[nome] (skype) [below = -0.15cm of mail] {{\color{boldblue}\scriptsize {\faSkype}}\color{blue}\fontsize{5}{6}\selectfont\ \ sidmontu};
+		\node[nome][below=\seplinedistance of skype] (hl4) {};
+		\draw[line width=1pt,color=blue] (hl4)++(-\seplinewidth/1.45,0) -- ++(\seplinewidth,0);
+		\node[nome] (interests) [below = -0.15cm of hl4] {\color{blue}\scalebox{.42}{RTL Design \& Verification, Dataflow Computing,}};
+		\node[nome] (interests1) [below = -0.15cm of interests] {\color{blue}\scalebox{.42}{Parallel Architectures, Embedded Systems}};
+		%\node[nome,right] (p3) [below  = of p2] {text text text};
+%		\matrix[anchor=west, below=-0.3cm of hl1,every node/.style={anchor=west}] (title) {
+%		};
+    \end{tikzpicture}
+  \vspace*{\fill}
+\end{document}
