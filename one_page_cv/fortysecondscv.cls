@@ -46,6 +46,7 @@
 \definecolor{cvsidecolor}{HTML}{E7E7E7}
 \definecolor{cvsectioncolor}{HTML}{0395DE}
 \definecolor{cvsubsectioncolor}{HTML}{4D4D4D}
+\definecolor{goldcolor}{cmyk}{0,.68,.73,.05}
 % set default values
 \colorlet{maincolor}{cvblue}
 \colorlet{sidecolor}{cvsidecolor}
@@ -76,7 +77,7 @@
 
 % profile picture settings
 \newlength\profilepicsize%
-\setlength{\profilepicsize}{0.7\sidebarwidth}
+\setlength{\profilepicsize}{0.4\sidebarwidth}
 \DeclareOptionX{profilepicsize}{\setlength{\profilepicsize}{#1}}
 
 % show sidebar and page margins
@@ -225,7 +226,7 @@
 	{\color{pseccolor}\normalfont\huge}{}{0pt}{\color{pseccolor}\sectionline}
 % set spaces before and after profilesections: <left><before><after>
 % "starred version kills the indentation of the paragraph following the title"
-\titlespacing*{\subsubsection}{0pt}{1ex}{1ex}
+\titlespacing*{\subsubsection}{0pt}{1ex}{0ex}
 
 
 %-------------------------------------------------------------------------------
@@ -267,8 +268,8 @@
 \newcommand*{\cvbirthday}[1]{\cvcustomdata{\faUser}{#1}}
 \newcommand*{\cvaddress}[1]{\cvcustomdata{\faMapMarker}{#1}}
 \newcommand*{\cvphone}[1]{\cvcustomdata{\faPhone}{#1}}
-\newcommand*{\cvsite}[1]{\cvcustomdata{\faGlobe}{\href{#1}{#1}}}
-\newcommand*{\cvmail}[1]{\cvcustomdata{\faEnvelope}{\href{mailto:#1}{#1}}}
+\newcommand*{\cvsite}[1]{\cvcustomdata{\faGlobe}{\href{#1}{\small #1}}}
+\newcommand*{\cvmail}[1]{\cvcustomdata{\faEnvelope}{\href{mailto:#1}{\small #1}}}
 \newcommand*{\cvgithub}[2]{\cvcustomdata{\faGithub}{\href{#1}{#2}}}
 \newcommand*{\cvlinkedin}[2]{\cvcustomdata{\faLinkedin}{\href{#1}{#2}}}
 \newcommand*{\cvscholar}[2]{\cvcustomdata{\faGraduationCap}{\href{#1}{#2}}}
@@ -280,7 +281,7 @@
 \newcommand{\nameandjob}{%
 	{\Huge\color{maincolor}\cvname}\par%
 	\setlength{\parskip}{2ex}
-	{\Large\color{black!80}\cvjobtitle}\par%
+	{\large\color{black!80}\cvjobtitle}\par%
 	\setlength{\parskip}{1ex}
 }
 
@@ -486,7 +487,7 @@
 
 \newcommand{\cvsignature}{
 	\vfill
-    {\scriptsize\color{maincolor!90}\today \hfill CV \LaTeX~template adapted from: \href{https://github.com/PandaScience/FortySecondsCV}{FortySecondsCV}}
+    {\scriptsize\color{maincolor!90}Updated \today \hfill CV \LaTeX~template adapted from: \href{https://github.com/PandaScience/FortySecondsCV}{FortySecondsCV}}
 }
 
 
@@ -592,15 +593,15 @@
 % or, if description is empty:
 % | <date>         <title>       \hfill  <location>  |
 \newcommand{\cvitem}[4]{%
-    \parbox[t]{0.17\textwidth}{\raggedright {\small #1}} &%
-	\parbox[t]{0.81\textwidth}{%
+    \parbox[t]{0.17\textwidth}{\raggedright {\scriptsize #1}} &%
+	\parbox[t]{0.82\textwidth}{%
 		\if\relax\detokenize{#4}\relax%
-			\parbox[t]{\linewidth-\widthof{\footnotesize #3}-1em}{\raggedright #2}%
+            \parbox[t]{\linewidth-\widthof{\footnotesize \textcolor{goldcolor}{#3}}-1em}{\raggedright #2}%
   		\hfill {\footnotesize#3}%
 		\else%
-			\parbox{\linewidth-\widthof{\footnotesize #3}-1em}{%
+            \parbox{\linewidth-\widthof{\footnotesize \textcolor{goldcolor}{#3}}-1em}{%
 				\raggedright \textbf{#2}%
-			} \hfill {\footnotesize#3} \\% 
+            } \hfill {\footnotesize\textcolor{goldcolor}{#3}} \\% 
 			\textcolor{itemtextcolor}{#4}%\vspace{\parsep}%
 		\fi%
 	}\\
@@ -612,9 +613,9 @@
 % |                <italic author>                   |
 % |                <journal>                         |
 \newcommand{\cvpubitem}[4]{%
-	\parbox[t]{0.17\textwidth}{\raggedright #4} &
-	\parbox[t]{0.81\textwidth}{%
-		\textbf{#1} \par \textit{#2} \par #3 \vspace{\parsep}%
+	\parbox[t]{0.12\textwidth}{\raggedright \footnotesize #4} &
+	\parbox[t]{0.87\textwidth}{%
+        \textbf{\footnotesize #1} \par \textit{\footnotesize #2} \par {\footnotesize#3} \vspace{\parsep}%
 	}\\
 }
 

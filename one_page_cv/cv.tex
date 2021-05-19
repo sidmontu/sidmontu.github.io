@@ -72,24 +72,24 @@
 % your name
 \cvname{Siddhartha}
 % job title/career
-\cvjobtitle{FPGAs / Machine Learning\\[0.2em] Engineer}
+\cvjobtitle{Machine Learning/FPGA Engineer}
 
 %% optional information
 % profile picture
 \cvprofilepic{pics/profile_compressed.jpg}
 
 % short address/location, use \newline if more than 1 line is required
-\cvaddress{Singapore}
+% \cvaddress{Singapore}
 % phone number
 % \cvphone{+61 411 77 1811}
-% personal website
-\cvsite{https://sidmontu.github.io}
 % email address
 \cvmail{sidmontu@gmail.com}
+% personal website
+\cvsite{https://sidmontu.github.io}
 % github
-\cvgithub{https://github.com/sidmontu/}{Github}
+\cvgithub{https://github.com/sidmontu/}{\small github.com/sidmontu}
 % linkedin 
-\cvlinkedin{https://www.linkedin.com/in/siddhartha-63249064/}{LinkedIn}
+\cvlinkedin{https://www.linkedin.com/in/siddhartha-63249064/}{\small linkedin.com/in/siddhartha-63249064}
 % google scholar 
 % \cvscholar{https://scholar.google.com/citations?user=tRI56rsAAAAJ}{Google Scholar}
 
@@ -104,12 +104,17 @@
 
     \profilesection{Personal Statement}
 	\aboutme{
-        Computer engineer/researcher with a strong academic track record
-        looking for a fresh challenge. I am especially interested in hardware
-        design and/or machine-learning related projects, as I have relevant
-        experience in both areas. Lifelong learner open to picking up new
-        technology stacks when needed, and ready to work hard towards ambitious
-        targets.
+        % Computer engineer/researcher with a strong academic track record
+        % looking for a fresh challenge. I am especially interested in hardware
+        % design and/or machine-learning related projects, as I have relevant
+        % experience in both areas. Lifelong learner open to picking up new
+        % technology stacks when needed, and ready to work hard towards ambitious
+        % targets.
+
+        Experienced mid-career software engineer with a FPGA-focused research
+        background looking for a fresh challenge. Especially interested in
+        applied AI and machine learning engineering projects, with/without
+        hardware acceleration (e.g. FPGAs/ASICs) as an auxiliary goal.
 	}
 
 	% social network accounts incl. proper hyperlinks
@@ -135,22 +140,29 @@
 
 	\profilesection{Hardware}
         \skill{\faUniversity}{Strong foundational experience}
-        \skill{\faKeyboard}{Proficient with Verilog}
+        \skill{\faKeyboard}{Proficient with (System)Verilog}
         \skill{\faWrench}{Familiar with FPGA tools}
         \skill{\faTerminal}{VivadoHLS / PYNQ Framework}
-        \skill{\faWifi}{RF communication fundamentals}
+        \skill{\faWifi}{RF communication (Ettus RFNoC Framework)}
         % \skill{\faLightbulb}{Learning SystemVerilog/UVM}
 
 	\profilesection{Software}
-        \skill{\faLinux}{Experienced UNIX user, comfortable with command-line tools.}
-        \skill{\faCuttlefish}{Experienced C/C++ programmer}
+        \skill{\faLinux}{Experienced with UNIX and CLI}
         \skill{\faPython}{Strong Python developer}
-        \skill{\faCogs}{Tensorflow/PyTorch machine learning frameworks}
-        \skill{\faChartBar}{Data Analysis using R}
+        \skill{\faCogs}{PyTorch/Tensorflow + Tensorpack machine learning frameworks}
+        \skill{\faToolbox}{MLOps tools such as MLFlow, Hub, and Label Studio}
+        \skill{\faReact}{Product design with ReactJS / Redux / SASS}
+        \skill{\faChartBar}{Data analysis/visualizations in R}
+        \skill{\faCuttlefish}{C/C++ programming on embedded systems}
         \skill{\faFont}{Typesetting with \LaTeX}
-        \skill{\faCodeBranch}{Version control, {\it e.g.} \texttt{git}}
-}
+        % \skill{\faCodeBranch}{Version control, {\it e.g.} \texttt{git}}
 
+    \profilesection{Deployment}
+        \skill{\faAws}{Hands-on experience with AWS cloud products}
+        \skill{\faServer}{Serverless Application Framework}
+        \skill{\faBrain}{Cortex.dev for ML inference deployment and monitoring}
+
+}
 
 %-------------------------------------------------------------------------------
 %                              SIDEBAR 2nd PAGE
@@ -194,6 +206,9 @@
 	\end{memberships}
 }
 
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\arraybackslash}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}m{#1}}
 
 %-------------------------------------------------------------------------------
 %                         TABLE ENTRIES RIGHT COLUMN
@@ -203,46 +218,75 @@
 \makefrontsidebar
 
 \cvsection{Work Experience}
-\vspace{-0.1in}
+\vspace{-0.3in}
 \begin{cvtable}[3]
-	\cvitem{Oct 2017 - Dec 2019}{Postdoctoral Research Associate}{University of Sydney}{
-        \textit{Main Project: High-speed machine learning for RF applications}
-        \\ This project explored the feasibility of applying and implementing
-        deep learning models on FPGAs for doing \textit{real-time}
-        radio-frequency spectral prediction. I served as the lead technical
-        engineer on this project, and built a software-framework for automating
-        the end-to-end flow of modeling, training, and implementing
-        convolutional neural networks on FPGAs. Topics/technology-stacks learnt
-        during the course of the project: Python, Tensorflow/Tensorpack,
-        VivadoHLS, low-precision neural networks. \\
-        \textit{Other roles}: Project supervision / guidance to undergraduate
-        students doing their final-year projects, involvement in other research
-        projects in the lab.
+    \cvitem{Feb'20 -- Present}{Founder, CTO \& Director}{inPact.ai}{
+        \renewcommand{\arraystretch}{1.2}% Tighter
+        \begin{tabular}{L{4mm}L{100mm}}
+            &\\[-0.1in]
+            \raisebox{2\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Led product development across all aspects of machine learning, frontend, backend, and deployment.}\\
+            \raisebox{4.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Hired and managed contractors and an intern to meet product development targets regularly. Enforced good development practices such as version control, linters, code reviews, etc.}\\
+            \raisebox{4.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Gained hands-on development experience with MLOps tools: Label studio for data annotation, MLFlow for model registry, Hub for dataset/feature store, and Cortex.dev for model deployment.}\\
+            \raisebox{4.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Hands-on experience with ReactJS and serverless frameworks. Setup inPact’s cloud infrastructure on AWS -- used a myriad of AWS cloud services such as Cognito, DynamoDB, S3, SNS, Lambda, etc.}\\
+            \raisebox{2\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Handled business functions such as customer acquisition, corporate partnerships, investor relations, fundraising, marketing, and more.}\\
+            \raisebox{4.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Raised S\$75K pre-seed from Entrepreneur First, an international VC firm funded by Reid Hoffman (founder of LinkedIn), founders of DeepMind and PayPal, and some of the top investors in the world.}\\
+        \end{tabular}
     }
-	\cvitem{Jun -- Oct 2012}{Undergraduate Research Assistant}{Imperial College London}{
-        Under the University Research Opportunities Program (UROP), I embarked
-        on a summer project under the supervision of
-        \href{https://nachiket.github.io}{Nachiket Kapre}, which eventually
-        served as a foundation to my PhD research. The work produced during
-        this stint was published as a short paper in the 2014 IEEE
-        Field-Programmable Custom Computing Machines conference proceedings.
+
+	\cvitem{Oct'17 -- Dec'19}{Postdoctoral Research Associate}{University of Sydney}{
+        \renewcommand{\arraystretch}{1.2}% Tighter
+        \begin{tabular}{L{4mm}L{100mm}}
+            &\\[-0.1in]
+            \raisebox{4.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Conducted research on: next-generation FPGA (overlay) architectures, low-precision deep neural networks, on-chip machine learning, and RF communication systems (Ettus RFNoC framework).}\\
+            \raisebox{2\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Core team member on a project (High-Speed Machine Learning for RF Communication) commissioned by the Australian Defense Force.}\\
+            \raisebox{2\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small (Co-)Authored 5 peer-reviewed research papers/posters during the stint at the lab.}\\
+            \raisebox{2\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Supervised final year undergraduate projects, assisted with teaching/invigilation, and undertook sysadmin duties over lab resources.}\\
+        \end{tabular}
     }
+
+    % \cvitemm{Oct'17 -- Dec'19}{Postdoctoral Research Associate}{University of Sydney}{abcd}
+
+% 	\cvitem{Jun -- Oct 2012}{Undergraduate Research Assistant}{Imperial College London}{
+%         Under the University Research Opportunities Program (UROP), I embarked
+%         on a summer project under the supervision of
+%         \href{https://nachiket.github.io}{Nachiket Kapre}, which eventually
+%         served as a foundation to my PhD research. The work produced during
+%         this stint was published as a short paper in the 2014 IEEE
+%         Field-Programmable Custom Computing Machines conference proceedings.
+%     }
 \end{cvtable}
 
-
+\vspace{-0.1in}
 \cvsection{Education}
+\vspace{-0.1in}
 \begin{cvtable}[1.5]
 	\cvitem{2013 -- 2019}{Doctor of Philosophy}{Nanyang Technological University, Singapore}{
-        \textit{Dissertation: Dataflow Optimized Overlays for FPGAs} \\
-        This thesis introduces Dataflow Coprocessor Overlay (DaCO), a token
-        dataflow overlay architecture tuned for FPGAs. DaCO pushes the
-        performance boundaries of existing designs by exploiting static
-        criticality information to support out-of-order execution inside each
-        processing element. When compared to in-order designs, DaCO delivers up
-        to 2.4$\times$ improvement in performance.
+        \textit{\small Dissertation: Dataflow Optimized Overlays for FPGAs} \\
+        \textit{\small Supervisor: \href{https://nachiket.github.io}{\textcolor{cvblue}{Dr. Nachiket Kapre}}} \\
+        % This thesis introduces Dataflow Coprocessor Overlay (DaCO), a token
+        % dataflow overlay architecture tuned for FPGAs. DaCO pushes the
+        % performance boundaries of existing designs by exploiting static
+        % criticality information to support out-of-order execution inside each
+        % processing element. When compared to in-order designs, DaCO delivers up
+        % to 2.4$\times$ improvement in performance.
+        \renewcommand{\arraystretch}{1.2}% Tighter
+        \begin{tabular}{L{4mm}L{100mm}}
+        \raisebox{0\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\footnotesize
+            Introduced DaCO, a Dataflow Coprocessor Overlay optimized for Arria
+            10 FPGAs.
+        }\\
+        \raisebox{7.25\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\footnotesize
+            Key research contributions: (1) custom dataflow scheduling circuit
+            that enables large-scale out-of-order instruction execution at
+            runtime, (2) priority-aware NoC packet routing for
+            criticality-aware dataflow communication, and (3) compiler support
+            to optimize dataflow graphs for better runtime performance.
+        }\\
+        \raisebox{1.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\footnotesize (Co-)Authored a total of 15 research papers/posters/journals at top-tier IEEE conferences during the candidacy.}\\
+        \end{tabular}
     }
-	\cvitem{2009 -- 2012}{Undergraduate}{Imperial College London}{
-        BEng in Electrical \& Electronics Engineering, graduated with a second-upper class honors degree.
+    \cvitem{2009 -- 2012}{Bachelors of Engineering (BEng)}{Imperial College London}{
+        {\small Faculty of Electrical \& Electronics Engineering, graduated with a second-upper class honors degree.}
     }
 \end{cvtable}
 
@@ -262,14 +306,15 @@
 % \end{cvtable}
 
 
+\vspace{-0.1in}
 \cvsection{Notable Publications\hfill {\small\href{https://scholar.google.com/citations?user=tRI56rsAAAAJ}{\faGraduationCap\hspace{0.05in}Google Scholar}}}
 \begin{cvtable}
     \cvpubitem{DaCO: A High-Performance Token Dataflow Coprocessor Overlay for FPGAs}{Siddhartha, Nachiket Kapre}
 		{International Conference on Field-Programmable Technology}{2018}
-    \cvpubitem{Hoplite-Q: Priority-Aware Routing in FPGA Overlay NoCs}{Siddhartha, Nachiket Kapre}{IEEE 26th Annual International Symposium on Field-Programmable Custom Computing Machines}{2018}
+    % \cvpubitem{Hoplite-Q: Priority-Aware Routing in FPGA Overlay NoCs}{Siddhartha, Nachiket Kapre}{IEEE 26th Annual International Symposium on Field-Programmable Custom Computing Machines}{2018}
     \cvpubitem{LUXOR: An FPGA Logic Cell Architecture for Eficient Compressor Tree Implementations}{Seyedramin Rasoulinezhad, Siddhartha, Hao Zhou, Lingli Wang, David Boland, Philip Leong}{ACM/SIGDA International Symposium on FPGAs}{2020}
     \cvpubitem{Long Short-Term Memory for Radio Frequency Spectral Prediction and its Real-Time FPGA Implementation}{Siddhartha, Yee Hui Lee, Duncan Moss, Julian Faraone, Perry Blackmore, Daniel Salmond, David Boland, and Philip Leong}{IEEE Military Communications Conference (MILCOM)}{2018}
-    \cvpubitem{Real-Time Automatic Modulation Classification using RFSoC}{Stephen Tridgell, David Boland, Philip Leong, Ryan Kastner, Alireza Khodamoradi, Siddhartha}{27th Reconfigurable Architectures Workshop}{2020}
+    % \cvpubitem{Real-Time Automatic Modulation Classification using RFSoC}{Stephen Tridgell, David Boland, Philip Leong, Ryan Kastner, Alireza Khodamoradi, Siddhartha}{27th Reconfigurable Architectures Workshop}{2020}
 \end{cvtable}
 
 % \cvsection{Awards}
