@@ -27,6 +27,8 @@
 %   proilepicsize=4.5cm,
 ]{fortysecondscv}
 
+\definecolor{linkcolor}{HTML}{005A87}
+
 % improve word spacing and hyphenation
 \usepackage{microtype}
 \usepackage{ragged2e}
@@ -138,24 +140,24 @@
 %  	\pointskill{\flag{GB.png}}{English}{3}
 %  	\pointskill{\flag{FR.png}}{French}{3}
 
+	\profilesection{Software}
+        \skill{\faLinux}{Experienced with UNIX and CLI}
+        \skill{\faPython}{Strong Python developer}
+        \skill{\faCogs}{PyTorch/Tensorflow + Tensorpack machine learning frameworks}
+        % \skill{\faToolbox}{MLOps tools such as MLFlow, Hub, and Label Studio}
+        \skill{\faReact}{Product development with ReactJS / Redux / SASS}
+        \skill{\faChartBar}{Data analysis/visualizations in R}
+        \skill{\faCuttlefish}{C/C++ programming}
+        \skill{\faFont}{Typesetting with \LaTeX}
+        % \skill{\faCodeBranch}{Version control, {\it e.g.} \texttt{git}}
+
 	\profilesection{Hardware}
-        \skill{\faUniversity}{Strong foundational experience}
+        \skill{\faUniversity}{Possess foundational knowledge}
         \skill{\faKeyboard}{Proficient with (System)Verilog}
         \skill{\faWrench}{Familiar with FPGA tools}
         \skill{\faTerminal}{VivadoHLS / PYNQ Framework}
         \skill{\faWifi}{RF communication (Ettus RFNoC Framework)}
         % \skill{\faLightbulb}{Learning SystemVerilog/UVM}
-
-	\profilesection{Software}
-        \skill{\faLinux}{Experienced with UNIX and CLI}
-        \skill{\faPython}{Strong Python developer}
-        \skill{\faCogs}{PyTorch/Tensorflow + Tensorpack machine learning frameworks}
-        \skill{\faToolbox}{MLOps tools such as MLFlow, Hub, and Label Studio}
-        \skill{\faReact}{Product design with ReactJS / Redux / SASS}
-        \skill{\faChartBar}{Data analysis/visualizations in R}
-        \skill{\faCuttlefish}{C/C++ programming on embedded systems}
-        \skill{\faFont}{Typesetting with \LaTeX}
-        % \skill{\faCodeBranch}{Version control, {\it e.g.} \texttt{git}}
 
     \profilesection{Deployment}
         \skill{\faAws}{Hands-on experience with AWS cloud products}
@@ -218,16 +220,26 @@
 \makefrontsidebar
 
 \cvsection{Work Experience}
-\vspace{-0.3in}
+\vspace{-0.2in}
 \begin{cvtable}[3]
-    \cvitem{Feb'20 -- Present}{Founder, CTO \& Director}{inPact.ai}{
+    \cvitem{Jun'20 -- Present}{Machine Learning Engineer (Contract)}{SAP Asia Pte Ltd}{
+        \renewcommand{\arraystretch}{1.2}% Tighter
+        \begin{tabular}{L{4mm}L{100mm}}
+            &\\[-0.1in]
+            \raisebox{2\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Part of the machine learning engineering team to build scalable and production-ready ML-driven applications for internal stakeholders.}\\
+            \raisebox{0.25\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Worked with/on ElasticSearch, Docker, FastAPI, Agile, ReactJS, etc.}\\
+        \end{tabular}
+    }
+
+    \cvitem{Feb'20 -- Present}{Founder \& CTO}{inPact.ai}{
         \renewcommand{\arraystretch}{1.2}% Tighter
         \begin{tabular}{L{4mm}L{100mm}}
             &\\[-0.1in]
             \raisebox{2\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Led product development across all aspects of machine learning, frontend, backend, and deployment.}\\
             \raisebox{4.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Hired and managed contractors and an intern to meet product development targets regularly. Enforced good development practices such as version control, linters, code reviews, etc.}\\
-            \raisebox{4.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Gained hands-on development experience with MLOps tools: Label studio for data annotation, MLFlow for model registry, Hub for dataset/feature store, and Cortex.dev for model deployment.}\\
-            \raisebox{4.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Hands-on experience with ReactJS and serverless frameworks. Setup inPact’s cloud infrastructure on AWS -- used a myriad of AWS cloud services such as Cognito, DynamoDB, S3, SNS, Lambda, etc.}\\
+            % \raisebox{4.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Gained hands-on development experience with MLOps tools: Label studio for data annotation, MLFlow for model registry, Hub for dataset/feature store, and Cortex.dev for model deployment.}\\
+            % \raisebox{4.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Hands-on experience with ReactJS and serverless frameworks. Setup inPact’s cloud infrastructure on AWS -- used a myriad of AWS cloud services such as Cognito, DynamoDB, S3, SNS, Lambda, etc.}\\
+            \raisebox{2\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Hands-on experience with ReactJS, the serverless framework, and services provided by the AWS cloud infrastructure.}\\
             \raisebox{2\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Handled business functions such as customer acquisition, corporate partnerships, investor relations, fundraising, marketing, and more.}\\
             \raisebox{4.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Raised S\$75K pre-seed from Entrepreneur First, an international VC firm funded by Reid Hoffman (founder of LinkedIn), founders of DeepMind and PayPal, and some of the top investors in the world.}\\
         \end{tabular}
@@ -239,7 +251,7 @@
             &\\[-0.1in]
             \raisebox{4.75\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Conducted research on: next-generation FPGA (overlay) architectures, low-precision deep neural networks, on-chip machine learning, and RF communication systems (Ettus RFNoC framework).}\\
             \raisebox{2\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Core team member on a project (High-Speed Machine Learning for RF Communication) commissioned by the Australian Defense Force.}\\
-            \raisebox{2\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small (Co-)Authored 5 peer-reviewed research papers/posters during the stint at the lab.}\\
+            \raisebox{0.25\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small (Co-)Authored 5 peer-reviewed research papers/posters.}\\
             \raisebox{2\height}{\tikz \fill [cvblue] (-0.07,-0.2) rectangle (0.07,-0.05);} & {\small Supervised final year undergraduate projects, assisted with teaching/invigilation, and undertook sysadmin duties over lab resources.}\\
         \end{tabular}
     }
@@ -307,15 +319,23 @@
 
 
 \vspace{-0.1in}
-\cvsection{Notable Publications\hfill {\small\href{https://scholar.google.com/citations?user=tRI56rsAAAAJ}{\faGraduationCap\hspace{0.05in}Google Scholar}}}
+\cvsection{Certifications}
+
+% \hfill {\small\href{https://scholar.google.com/citations?user=tRI56rsAAAAJ}{\faGraduationCap\hspace{0.05in}Google Scholar}}}
+
 \begin{cvtable}
-    \cvpubitem{DaCO: A High-Performance Token Dataflow Coprocessor Overlay for FPGAs}{Siddhartha, Nachiket Kapre}
-		{International Conference on Field-Programmable Technology}{2018}
-    % \cvpubitem{Hoplite-Q: Priority-Aware Routing in FPGA Overlay NoCs}{Siddhartha, Nachiket Kapre}{IEEE 26th Annual International Symposium on Field-Programmable Custom Computing Machines}{2018}
-    \cvpubitem{LUXOR: An FPGA Logic Cell Architecture for Eficient Compressor Tree Implementations}{Seyedramin Rasoulinezhad, Siddhartha, Hao Zhou, Lingli Wang, David Boland, Philip Leong}{ACM/SIGDA International Symposium on FPGAs}{2020}
-    \cvpubitem{Long Short-Term Memory for Radio Frequency Spectral Prediction and its Real-Time FPGA Implementation}{Siddhartha, Yee Hui Lee, Duncan Moss, Julian Faraone, Perry Blackmore, Daniel Salmond, David Boland, and Philip Leong}{IEEE Military Communications Conference (MILCOM)}{2018}
-    % \cvpubitem{Real-Time Automatic Modulation Classification using RFSoC}{Stephen Tridgell, David Boland, Philip Leong, Ryan Kastner, Alireza Khodamoradi, Siddhartha}{27th Reconfigurable Architectures Workshop}{2020}
+    \cvpubitem{\textcolor{cvblue}{\href{https://www.coursera.org/specializations/machine-learning-engineering-for-production-mlops}{\it Machine Learning Engineering for Production (MLOps) Specialization}}}{Coursera MOOC offered by DeepLearning.AI}{4-module specialization focusing on best in-industry practices for building and deploying end-to-end production-ready machine learning systems. Instructors include Andrew Ng (founder DeepLearning.AI and Coursera), Robert Crowe (Tensorflow Developer Engineer, Google), Laurence Moroney (Lead AI Advocate, Google), and more.}{Ongoing}
+    \cvpubitem{\textcolor{cvblue}{\href{https://www.coursera.org/specializations/jhu-data-science}{\it Data Science Specialization}}}{Coursera MOOC offered by John Hopkins University}{10-module specialization that covers concepts and tools essential for building effective data science pipelines. Instructors include Jeff Leek, Roger D. Peng, and Brian Caffo, all of whom are professors at John Hopkins university.}{Apr 2016}
 \end{cvtable}
+
+% \begin{cvtable}
+%     \cvpubitem{DaCO: A High-Performance Token Dataflow Coprocessor Overlay for FPGAs}{Siddhartha, Nachiket Kapre}
+% 		{International Conference on Field-Programmable Technology}{2018}
+%     % \cvpubitem{Hoplite-Q: Priority-Aware Routing in FPGA Overlay NoCs}{Siddhartha, Nachiket Kapre}{IEEE 26th Annual International Symposium on Field-Programmable Custom Computing Machines}{2018}
+%     \cvpubitem{LUXOR: An FPGA Logic Cell Architecture for Eficient Compressor Tree Implementations}{Seyedramin Rasoulinezhad, Siddhartha, Hao Zhou, Lingli Wang, David Boland, Philip Leong}{ACM/SIGDA International Symposium on FPGAs}{2020}
+%     \cvpubitem{Long Short-Term Memory for Radio Frequency Spectral Prediction and its Real-Time FPGA Implementation}{Siddhartha, Yee Hui Lee, Duncan Moss, Julian Faraone, Perry Blackmore, Daniel Salmond, David Boland, and Philip Leong}{IEEE Military Communications Conference (MILCOM)}{2018}
+%     % \cvpubitem{Real-Time Automatic Modulation Classification using RFSoC}{Stephen Tridgell, David Boland, Philip Leong, Ryan Kastner, Alireza Khodamoradi, Siddhartha}{27th Reconfigurable Architectures Workshop}{2020}
+% \end{cvtable}
 
 % \cvsection{Awards}
 % \begin{cvtable}
