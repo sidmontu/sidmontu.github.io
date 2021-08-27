@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.12.21)  22 AUG 2021 00:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.12.21)  27 AUG 2021 16:41
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1327,12 +1327,6 @@ LaTeX Font Info:    Font shape `U/fontawesomebrands1/solid/n' in size <10> not
 available
 (Font)              Font shape `U/fontawesomebrands1/regular/n' tried instead o
 n input line 222.
-LaTeX Font Info:    Font shape `T1/ClearSans-TLF/m/n' in size <7> not available
-
-(Font)              Font shape `T1/ClearSans-TLF/regular/n' tried instead on in
-put line 222.
-LaTeX Font Info:    Font shape `T1/ClearSans-TLF/regular/n' will be
-(Font)              scaled to size 7.0pt on input line 222.
 LaTeX Font Info:    Trying to load font information for U+fontawesomefree1 on i
 nput line 222.
 
@@ -1355,6 +1349,12 @@ able
  line 224.
 LaTeX Font Info:    Font shape `T1/ClearSans-TLF/bold/n' will be
 (Font)              scaled to size 17.28pt on input line 224.
+LaTeX Font Info:    Font shape `T1/ClearSans-TLF/m/n' in size <7> not available
+
+(Font)              Font shape `T1/ClearSans-TLF/regular/n' tried instead on in
+put line 234.
+LaTeX Font Info:    Font shape `T1/ClearSans-TLF/regular/n' will be
+(Font)              scaled to size 7.0pt on input line 234.
 LaTeX Font Info:    Font shape `T1/ClearSans-TLF/m/n' in size <8> not available
 
 (Font)              Font shape `T1/ClearSans-TLF/regular/n' tried instead on in
@@ -1421,7 +1421,7 @@ Package rerunfilecheck Info: File `cv.out' has not changed.
 Here is how much of TeX's memory you used:
  35868 strings out of 492163
  705036 string characters out of 6123394
- 814142 words of memory out of 5000000
+ 813725 words of memory out of 5000000
  39635 multiletter control sequences out of 15000+600000
  616739 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1439,7 +1439,7 @@ t/fonts/type1/intel/clearsans/ClearSans-Regular.pfb></home/sidmontu/texlive/201
 9/texmf-dist/fonts/type1/public/fontawesome5/FontAwesome5Brands-Regular.pfb></h
 ome/sidmontu/texlive/2019/texmf-dist/fonts/type1/public/fontawesome5/FontAwesom
 e5Free-Solid.pfb>
-Output written on cv.pdf (1 page, 469455 bytes).
+Output written on cv.pdf (1 page, 469088 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  56 compressed objects within 1 object stream
