@@ -2,24 +2,42 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+# subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: Systems Design Engineer, AMD Singapore (formerly Xilinx)
 
 profile:
   align: right
   image: prof_pic.jpg
   image_cicular: false # crops the image to make it circular
-  address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+  # address: >
+  #   <p>Systems Design Engineer,</p>
+  #   <p>AMD (formerly Xilinx),</p>
+  #   <p>Singapore</p>
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Welcome to my personal page. Here, I try to keep an up-to-date account of
+projects I have worked on, and also write blog posts on the side. I have worked
+intimately with FPGAs in the past, and I believe they will play an increasingly
+important role in the post-Moore future of computing. Lately, apart from
+hardware engineering, my interests have also revolved around the fast-evolving
+space of deep learning.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+------------------------------
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+<h3>academic/work summary</h3>
+
+<ul style="list-style-type:square;margin:0px 20px 20px 20px;padding:0;">
+  <li><b>Systems Design Engineer</b> (Jan 2022 - Present), AMD Inc, Singapore</li>
+  <li><b>Machine Learning Engineer (Contract Role)</b> (June - Dec 2020), SAP Asia, Singapore</li>
+  <li><b>CTO/Founder</b> (May 2020 - Sep 2021), Inpact Technologies, Singapore</li>
+  <li><b>Founder in Residence (SG7)</b> (Jan 2020 - May 2020), Entrepreneur First, Singapore</li>
+  <li><b>Postdoctoral Researcher</b> (Oct 2017 - Dec 2019), University of Sydney, Australia</li>
+  <li><b>PhD Candidate</b> (Jan 2013 - Jan 2019), Nanyang Technological University, Singapore</li>
+  <li><b>BEng</b> (Oct 2009 - Jun 2012), EEE Imperial College London, United Kingdom</li>
+</ul>
+
+------------------------------
