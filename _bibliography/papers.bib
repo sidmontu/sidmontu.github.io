@@ -80,3 +80,28 @@
   publisher={Vision},
   preview={wave-mechanics.gif}
 }
+
+@article{breaking_fccm2014,
+  title={Breaking Sequential Dependencies in FPGA-based Sparse LU Factorization},
+  author={Siddhartha and Kapre, Nachiket},
+  abstract={Substitution, and reassociation of irregular sparse LU factorization can deliver up to 31% additional speedup over an existing state-of-the-art parallel FPGA implementation where further parallelization was deemed virtually impossible. The state-of-the-art implementation is already capable of delivering 3x acceleration over CPU-based sparse LU solvers. Sparse LU factorization is a well-known computational bottleneck in many existing scientific and engineering applications and is notoriously hard to parallelize due to inherent sequential dependencies in the computation graph. In this paper, we show how to break these alleged inherent dependencies using depth-limited substitution, and reassociation of the resulting computation. This is a work-parallelism tradeoff that is well-suited for implementation on FPGA-based token dataflow architectures. Such compute organizations are capable of fast parallel processing of large irregular graphs extracted from the sparse LU computation. We manage and control the growth in additional work due to substitution through careful selection of substitution depth. We exploit associativity in the generated graphs to restructure long compute chains into reduction trees.},
+  publisher={IEEE},
+  year={2014},
+  month={May},
+  pdf={breaking_fccm2014.pdf},
+  html={http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6861588&refinements%3D4273508772%26sortType%3Dasc_p_Sequence%26filter%3DAND%28p_IS_Number%3A6861562%29},
+  preview={breaking_fccm2014.png}
+}
+
+@article{posterdac2013,
+  title={Poster on current research project on Sparse LU Factorization},
+  author={Siddhartha,},
+  abstract={Sparse matrix factorization is a common engineering problem that is often a computational bottleneck in many scientific applications. In this project, we explore techniques such as unrolling and re-association in an attempt to parallelize the front-solve algorithm found in the LU decomposition method. The front-solve is a major computational bottleneck in the KLU sparse matrix factorization algorithm, which can be found in applications such as SPICE, an EDA tool for designing and testing hardware. We have developed a preliminary sparse matrix pre-processor software model in Java to generate compute graphs of matrix solve operations using the novel technique, which are then used to benchmark the improvements in performance over the existing methods.},
+  publisher={IEEE},
+  year={2013},
+  month={June},
+  pdf={poster_dac2013.pdf},
+  preview={dac2013poster.png}
+}
+
+
