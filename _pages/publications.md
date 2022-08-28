@@ -10,7 +10,11 @@ nav_order: 1
 <!-- _pages/publications.md -->
 <div class="publications">
 
-<a href="https://scholar.google.com.sg/citations?user=tRI56rsAAAAJ&hl=en" target="_blank">Google Scholar Profile</a>
+<div class="social-pubs">
+  <div class="contact-icons">
+    <a href="https://scholar.google.com/citations?user={{ site.scholar_userid }}" target="_blank" rel="noopener noreferrer" title="Google Scholar"><i class="ai ai-google-scholar"></i> <span>Siddhartha (Google Scholar)</span></a>
+  </div>
+</div>
 
 {%- for y in page.years %}
   <h2 class="year">{{y}}</h2>
