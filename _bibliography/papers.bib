@@ -81,22 +81,290 @@
   preview={wave-mechanics.gif}
 }
 
+@article{amc_raw2020,
+  bibtex_show={true},
+  title={Real-time Automatic Modulation Classification using RFSoC},
+  author={Tridgell, Stephen and Boland, David and Leong, Philip H.W. and Kastner, Ryan and Khodamoradi, Alireza and Siddhartha},
+  abstract={The computational complexity of deep learning has led to research efforts to reduce the computation required. The use of low precision is particularly effective on FPGAs as they are not restricted to byte addressable operations. Very low precision activations and weights can have a significant impact on the accuracy however. This work demonstrates by exploiting throughput matching that higher precision on certain layers can be used to recover this accuracy. This is applied to the domain of automatic modulation classification for radio signals leveraging the RF capabilities offered by the Xilinx ZCU111 RFSoC platform. The implemented networks achieve high-speed real-time performance with a classification latency of ~8us, and an operational throughput of 488k classifications per second. On the open-source RadioML dataset, we demonstrate how to recover 4.3% in accuracy with the same hardware usage with our technique.},
+  publisher={IEEE},
+  journal={27th Reconfigurable Architectures Workshop (RAW), co-located with IPDPS},
+  year={2020},
+  month={May},
+  pdf={amc_raw2020.pdf},
+  html={https://ieeexplore.ieee.org/abstract/document/9150443},
+  preview={amc_raw2020.png}
+}
+
+@article{luxor_fpga2020,
+  bibtex_show={true},
+  title={LUXOR: An FPGA Logic Cell Architecture for Eficient Compressor Tree Implementations (ACM Badges: Artifacts Evaluated - Functional & Results Replicated)},
+  author={Rasoulinezhad, SeyedRamin and Siddhartha and Zhou, Hao and Wang, Lingli and Boland, David and Leong, Philip H.W.},
+  abstract={We propose two tiers of modifications to FPGA logic cell architecture to deliver a variety of performance and utilization benefits with only minor area overheads. In the first tier, we augment existing commercial logic cell datapaths with a 6-input XOR gate in order to improve the expressiveness of each element, while maintaining backward compatibility. This new architecture is vendor-agnostic, and we refer to it as LUXOR. We also consider a secondary tier of vendor-specific modifications to both Xilinx and Intel FPGAs, which we refer to as X-LUXOR+ and I-LUXOR+ respectively. We demonstrate that compressor tree synthesis using generalized parallel counters (GPCs) is further improved with the proposed modifications. Using both the Intel adaptive logic module and the Xilinx slice at the 65nm technology node for a comparative study, it is shown that the silicon area overhead is less than 0.5% for LUXOR and 5-6% for LUXOR+, while the delay increments are 1-6% and 3-9% respectively. We demonstrate that LUXOR can deliver an average reduction of 13-19% in logic utilization on micro-benchmarks from a variety of domains. BNN benchmarks benefit the most with an average reduction of 37-47% in logic utilization, which is due to the highly-efficient mapping of the XnorPopcount operation on our proposed LUXOR+ logic cells.},
+  publisher={ACM/SIGDA},
+  journal={International Symposium on Field-Programmable Gate Arrays (FPGA)},
+  year={2020},
+  month={February},
+  pdf={luxor_fpga2020.pdf},
+  html={https://arxiv.org/abs/2003.03043},
+  preview={luxor_fpga2020.png}
+}
+
+@article{amc_fpt2019,
+  bibtex_show={true},
+  title={Real-Time Automatic Modulation Classification (Poster)},
+  author={Tridgell, Stephen and Boland, David and Leong, Philip H.W. and Siddhartha},
+  abstract={Deep learning based techniques have shown promising results over traditional hand-crafted methods for automatic modulation classification for radio signals. However, implementation of these deep learning models on specialized hardware can be challenging, as both latency and throughput performance are critical to achieving real-time response to over-the-air radio signals. In this work, we meet our targets by designing an optimized ternarized convolutional neural network that leverages the RF capabilities offered by the Xilinx ZCU111 RFSoC platform. The implemented networks achieve high-speed real-time performance with a classification latency of ~8us, and an operational throughput of 488k classifications per second. On the challenging open-source RadioML dataset, we achieve up to 81.1% accuracy, which is competitive to existing state-of-the-art software-only implementations.},
+  publisher={IEEE},
+  journal={International Conference on Field-Programmable Technology (FPT)},
+  year={2019},
+  month={December},
+  pdf={amc_fpt2019.pdf},
+  html={https://ieeexplore.ieee.org/document/8977889},
+  preview={amc_fpt2019.png}
+}
+
+@article{daco_fpt2018,
+  bibtex_show={true},
+  title={DaCO: A High-Performance Token Dataflow Coprocessor Overlay for FPGAs},
+  author={Siddhartha and Kapre, Nachiket},
+  abstract={Dataflow computing architectures exploit dynamic parallelism at the fine granularity of individual operations and provide a pathway to overcome the performance and energy limits of conventional von Neumann models. In this vein, we present DaCO (Dataflow Coprocessor FPGA Overlay), a high-performance compute organization for FPGAs to deliver up to 2.5× speedup over existing dataflow alternatives. Historically, dataflow-style execution has been viewed as an attractive parallel computing paradigm due to the self-timed, decentralized nature of implementation of dataflow dependencies and an absence of sequential program counters. However, realising high-performance dataflow computers has remained elusive largely due to the complexity of scheduling this parallelism and data communication bottlenecks. DaCO achieves this by (1) supporting large-scale (1000s of nodes) out-of-order scheduling using hierarchical lookup, (2) priority-aware routing of dataflow dependencies using the efficient Hoplite-Q NoC, and (3) clustering techniques to exploit data locality in the communication network organization. Each DaCO processing element is a programmable soft processor and it communicates with others using a packet-switching network-on-chip (PSNoC). We target the Arria 10 AX115S FPGA to take advantage of the hard floating-point DSP blocks, and maximize performance by multipumping the M20K Block RAMs. Overall, we can scale DaCO to 450 processors operating at an fmax of 250 MHz on the target platform. Each soft processor consumes 779 ALMs, 4 M20K BRAMs, and 3 hard floating-point DSP blocks for optimum balance, while the on-chip communication framework consumes <15% of the on-chip resources.},
+  publisher={IEEE},
+  journal={International Conference on Field-Programmable Technology (FPT)},
+  year={2018},
+  month={December},
+  pdf={daco_fpt2018.pdf},
+  html={https://ieeexplore.ieee.org/document/8742315},
+  preview={daco_fpt2018.png}
+}
+
+@article{wp_fpt2018,
+  bibtex_show={true},
+  title={Simultaneous Inference and Training Using On-FPGA Weight Perturbation Techniques (Poster)},
+  author={Siddhartha and Wilton, Steve and Boland, David and Flower, Barry and Blackmore, Perry and Leong, Philip H.W.},
+  abstract={We present an FPGA-optimized implementation of online neural network training based on weight perturbation (WP) techniques. When compared to the classic backpropagation (BP) algorithm, WP is capable of delivering competitive performance while occupying minimal area resources. Perturbation-based methods have been demonstrated as viable training techniques and are suitable for on-line learning applications which adapt to changing conditions. The viability of applying WP-based on-chip training for low-precision fixed-point hardware is demonstrated on two distinct MLP benchmarks: the Iris dataset classification network and an RF anomaly detector. When synthesized to a Xilinx Kintex-7 XC7K410T FPGA, WP offers a 3-10x area savings with <1% degradation in accuracy compared with backpropagation. Compared with an inference-only implementation the overhead of introducing on-chip learning is approximately 30%.},
+  publisher={IEEE},
+  journal={International Conference on Field-Programmable Technology (FPT)},
+  year={2018},
+  month={December},
+  pdf={wp_fpt2018.pdf},
+  html={https://ieeexplore.ieee.org/document/8742277},
+  preview={wp_fpt2018.png}
+}
+
+@article{lstm_milcom2018,
+  bibtex_show={true},
+  title={Long Short-Term Memory for Radio Frequency Spectral Prediction and its Real-Time FPGA Implementation},
+  author={Siddhartha and Lee, Yee Hui and Moss, Duncan J.M. and Faraone, Julian and Blackmore, Perry and Salmond, Daniel and Boland, David and Leong, Philip H.W.},
+  abstract={Reactive communication waveforms hosted in current generation tactical radios often fail to achieve good performance and resilience in highly dynamic and complex environments. Arguably, novel waveforms that can proactively adapt to anticipated channel conditions may better meet the challenges of the tactical environment. This motivates the ability to accurately predict spectral behaviour in real-time. A Long Short-Term Memory (LSTM) network is a type of recurrent neural network which has been extremely successful in dealing with time-dependent signal processing problems such as speech recognition and machine translation. In this paper, we apply it to the task of spectral prediction and present a module generator for a latency-optimised Field-Programmable Gate Array (FPGA) implementation. We show that our implementation obtains superior results to other time series prediction techniques including a naive predictor, moving average and ARIMA for the problem of radio frequency spectral prediction. For a single LSTM layer plus a fully-connected output layer with 32 inputs and 32 outputs, we demonstrate that a prediction latency of 4.3us on a Xilinx XC7K410T Kintex-7 FPGA is achievable.},
+  publisher={IEEE},
+  journal={IEEE Military Communications Conference (MILCOM)},
+  year={2018},
+  month={October},
+  pdf={lstm_milcom2018.pdf},
+  html={https://ieeexplore.ieee.org/document/8599833},
+  preview={lstm_milcom2018.png}
+}
+
+@article{hopliteq_fccm2018,
+  bibtex_show={true},
+  title={Hoplite-Q: Priority-Aware Routing in FPGA Overlay NoCs},
+  author={Siddhartha and Kapre, Nachiket},
+  abstract={The Hoplite FPGA overlay network-on-chip routes packets in an oblivious manner without considering application priority when computing packet paths. This degrades performance across all priority classes of traffic by allowing them to interact and mix in the network in an arbitrary manner. However, real-world FPGA systems often need to route traffic from mixed-priority, multi-application workloads such as multi-tenant cloud deployments. Such scenarios require NoC resources to be allocated in a priority-aware manner to deliver expected Quality-of-Service outcomes to the FPGA applications. In this paper, we introduce Hoplite-Q, a lightweight router that exploits choice during routing to deliver improved outcomes for higher priority traffic on the NoC. We achieve this by (1) adding priority bits to the packet being routed, (2) enhancing routing choice in the switch with the addition of a single buffer, and (3) augmenting the routing function to use the buffer and priority tags in static and dynamic manner. Overall, the use of buffers and priority-aware routing improves throughput of high-priority applications by up to 1.8x, worst-case latency by 1.5-3.9x, while increasing the FPGA area utilization for the NoC by 1.3-3.8x on the Altera Arria 10 AX115S FPGA board.},
+  publisher={IEEE},
+  journal={26th IEEE International Symposium Field-Programmable Custom Computing Machines (FCCM)},
+  year={2018},
+  month={May},
+  pdf={hopliteq_fccm2018.pdf},
+  html={https://ieeexplore.ieee.org/document/8457627},
+  preview={hopliteq_fccm2018.png}
+}
+
+@article{ebsp_date2017,
+  bibtex_show={true},
+  title={eBSP: Managing NoC traffic for BSP workloads on the 16-core Adapteva Epiphany-III Processor},
+  author={Siddhartha and Kapre, Nachiket},
+  abstract={We can deliver high performance and energy efficient operation on the multi-core NoC-based Adapteva Epiphany-III SoC using our proposed eBSP communication API for bulk-synchronous workloads. We characterize and automate performance tuning of spatial parallelism for supporting (1) random access load-store style traffic suitable for irregular sparse computations, as well as (2) variable, data-dependent traffic patterns in neural networks or PageRank-style workloads in a manner tailored for the Epiphany NoC. We aggressively optimize traffic by exposing spatial communication structure to the fabric through fracturing of longer messages, offline pre-computation of destination addresses, unrolling of message-passing loops, selective squelching of messages, and careful ordering of communication and compute. Using our approach, across a range of applications and datasets such as Sparse Matrix-Vector multiplication (Matrix Market datasets), PageRank (BerkStan SNAP dataset), and Izhikevich spiking neural evaluation, we deliver speedups of 6.5-8x while lowering power use by 2x over optimized ARM-based mappings. When compared to optimized OpenMP x86 mappings, we observe a 10-40x improvement in energy efficiency (GFLOP/s/W) for the Epiphany SoC. Epiphany is also able to beat state-of-the-art spatial FPGA (ZC706) and embedded GPU (Jetson TK1) mappings due to our communication optimizations.},
+  publisher={IEEE},
+  journal={Design, Automation, and Test in Europe (DATE)},
+  year={2017},
+  month={March},
+  pdf={ebsp_date2017.pdf},
+  html={https://ieeexplore.ieee.org/document/7926961},
+  preview={ebsp_date2017.png}
+}
+
+@article{ooo_olaf2017,
+  bibtex_show={true},
+  title={Out-of-Order Dataflow Scheduling for FPGA Overlays (Position Paper)},
+  author={Siddhartha and Kapre, Nachiket},
+  abstract={We exploit floating-point DSPs in the Arria10 FPGA and multi-pumping feature of the M20K RAMs to build a dataflow-driven soft processor fabric for large graph workloads. In this paper, we introduce the idea of out-of-order node scheduling across a large number of local nodes (thousands) per processor by combining an efficient node tagging scheme along with leading-one detector circuits. We use a static one-time node labeling algorithm to sort nodes based on criticality to organize local memory inside each soft processor. This translates to a small ~6% memory overhead. When compared to a memory-expensive FIFO-based first-come-first-serve approach used in previous studies, we deliver up to 50% performance improvement while eliminating the cost of the FIFOs. On the Arria10 10AX115S board, we can create an overlay design of up to 300 processors connected by high bandwidth Hoplite NoC at frequencies up to 250MHz.},
+  publisher={IEEE},
+  journal={Overlay Architectures for FPGAs (OLAF) Workshop (co-located with FPGA)},
+  year={2017},
+  month={February},
+  pdf={ooo_olaf2017.pdf},
+  html={https://arxiv.org/abs/1705.02734},
+  preview={ooo_olaf2017.png}
+}
+
+@article{caffepresso_cases2016,
+  bibtex_show={true},
+  title={CaffePresso: An Optimized Library for Deep Learning on Embedded Accelerator-based platforms (Best Paper Award)},
+  author={Hegde, Gopalakrishna and Siddhartha and Ramasamy, Nachiappan and Kapre, Nachiket},
+  abstract={Off-the-shelf accelerator-based embedded platforms offer a competitive energy-efficient solution for lightweight deep learning computations over CPU-based systems. Low-complexity classifiers used in power-constrained and performance-limited scenarios are characterized by operations on small image maps with 2– 3 deep layers and few class labels. For these use cases, we consider a range of embedded systems with 5–20 W power budgets such as the Xilinx ZC706 board (with MXP soft vector processor), NVIDIA Jetson TX1 (GPU), TI Keystone II (DSP) as well as the Adapteva Parallella board (custom multi-core with NoC). Deep Learning computations push the capabilities of these platforms to the limit through compute-intensive evaluations of multiple 2D convolution filters per layer, and high communication requirements arising from the movement of intermediate maps across layers. We present CaffePresso, a Caffe-compatible framework for generating optimized mappings of user-supplied ConvNet specifications to target various accelerators such as FPGAs, DSPs, GPUs, RISC-multicores. We use an automated code generation and autotuning approach based on knowledge of the ConvNet requirements, as well as platform-specific constraints such as on-chip memory capacity, bandwidth and ALU potential. While one may expect the Jetson TX1 + cuDNN to deliver high performance for ConvNet configurations, (1) we observe a flipped result with slower GPU processing compared to most other systems for smaller embedded-friendly datasets such as MNIST and CIFAR10, and (2) faster and more energy efficient implementation on the older 28nm TI Keystone II DSP over the newer 20nm NVIDIA TX1 SoC in all cases.},
+  publisher={IEEE},
+  journal={International Conference on Compilers, Architecture, and Synthesis for Embedded Systems (CASES)},
+  year={2016},
+  month={October},
+  pdf={caffepresso_cases2016.pdf},
+  html={https://ieeexplore.ieee.org/document/7745277},
+  preview={caffepresso_cases2016.png}
+}
+
+@article{dwt_fpl2016,
+  bibtex_show={true},
+  title={Vector FPGA Acceleration of 1-D DWT Computations using Sparse Matrix Skeletons (Short Paper)},
+  author={Maheshwari, Sidharth and Modi, Gourav and Siddhartha and Kapre, Nachiket},
+  abstract={We can exploit application-specific sparse structure and distribution of non-zero coefficients in Discrete Wavelet Transform (DWT) matrices to significantly improve the performance of 1-D DWT mapped to FPGA-based soft vector processors. We reformulate DWT computations specifically in terms of sparse matrix operations, where the transformation matrices have a repeating block with a fixed non-zero pattern, which we refer to as a skeleton. We exploit this property to transform the original DWT matrix into a Modified-Matrix-Form to expose abundant soft vector parallelism in the dot products. The resulting form can also be readily compiled into low-level DMA routines for boosting memory throughput. We auto-generate vector routines and memory access sequences tailored for parametric combinations of DWT filter sizes, and decomposition levels as required by the application domain. When compared to embedded ARMv7 32b CPU implementations using optimized OpenBLAS routines, soft vector implementation on the Xilinx Zedboard and Altera DE2/DE4 platforms demonstrate speedups of 12–103x.},
+  publisher={IEEE},
+  journal={26th IEEE International Conference on Field-Programmable Logic and Applications (FPL)},
+  year={2016},
+  month={August},
+  pdf={dwt_fpl2016.pdf},
+  html={https://ieeexplore.ieee.org/document/7577361},
+  preview={dwt_fpl2016.png}
+}
+
+@article{epiphany_fccm2016,
+  bibtex_show={true},
+  title={Communication Optimization for the 16-core Epiphany Floating-Point Processor Array (Poster)},
+  author={Siddhartha and Kapre, Nachiket},
+  abstract={The management and optimization of communication in an NoC-based (network-on-chip) bespoke computing platform such as the Parallella (Zynq 7010 + Epiphany-III SoC) is critical for performance and energy-efficiency of floating-point bulk-synchronous workloads. In this paper, we explore the opportunities and capabilities of the Epiphany-III SoC for communication-intensive workloads. Using our communication support library for the Epiphany, we are able to accelerate single-precision BSP workloads like the Sparse Matrix-Vector multiplication (SpMV) on Matrix Market datasets by up to 6.5x and PageRank algorithm on the BerkStan SNAP dataset by up to 8x, while lowering power usage by 2x over optimized ARM-based implementations. When compared to optimized OpenMP x86 mappings, we observe a ~10× improvement in energy efficiency (GFLOP/s/W) with Epiphany SoC.},
+  publisher={IEEE},
+  journal={24th IEEE International Symposium on Field-Programmable Custom Computing Machines (FCCM)},
+  year={2016},
+  month={May},
+  pdf={epiphany_fccm2016.pdf},
+  html={https://ieeexplore.ieee.org/document/7544738},
+  preview={epiphany_fccm2016.png}
+}
+
+@article{deeplearn_fccm2016,
+  bibtex_show={true},
+  title={Evaluating Embedded FPGA Accelerators for Deep Learning Applications (Poster)},
+  author={Hegde, Gopalakrishna and Siddhartha and Ramasamy, Nachiappan and Buddha, Vamsi and Kapre, Nachiket},
+  abstract={FPGA-based embedded soft vector processors can exceed the performance and energy-efficiency of embedded GPUs and DSPs for lightweight deep learning applications. For low complexity deep neural networks targeting resource constrained platforms, we develop optimized Caffe-compatible deep learning library routines that target a range of embedded accelerator-based systems between 4–8 W power budgets such as the Xilinx Zedboard (with MXP soft vector processor), NVIDIA Jetson TK1 (GPU), InForce 6410 (DSP), TI EVM5432 (DSP) as well as the Adapteva Parallella board (custom multi-core with NoC). For MNIST (28×28 images) and CIFAR10 (32×32 images), the deep layer structure is amenable to MXP-enhanced FPGA mappings to deliver 1.4–5x higher energy efficiency than all other platforms. Not surprisingly, embedded GPU works better for complex networks with large image resolutions.},
+  publisher={IEEE},
+  journal={24th IEEE International Symposium on Field-Programmable Custom Computing Machines (FCCM)},
+  year={2016},
+  month={May},
+  pdf={deeplearn_fccm2016.pdf},
+  html={https://ieeexplore.ieee.org/document/7544737},
+  preview={deeplearn_fccm2016.png}
+}
+
+@article{graphmmu_raw2015,
+  bibtex_show={true},
+  title={GraphMMU: Memory Management Unit for Sparse Graph Accelerators},
+  author={Kapre, Nachiket and Han, Jianglei and Bean, Andrew and Moorthy, Pradeep and Siddhartha},
+  abstract={Memory management units that use low-level AXI descriptor chains to hold irregular graph-oriented access sequences can help improve DRAM memory throughput of graph algorithms by almost an order of magnitude. For the Xilinx Zedboard, we explore and compare the memory throughputs achievable when using (1) cache-enabled CPUs with an OS, (2) cache-enabled CPUs running bare metal code, (2) CPU-based control of FPGAbased AXI DMAs, and finally (3) local FPGA based control of AXI DMA transfers. For short-burst irregular traffic generated from sparse graph access patterns, we observe a performance penalty of almost 10X due to DRAM row activations when compared to cache-friendly sequential access. When using an AXI DMA engine configured in FPGA logic and programmed in AXI register mode from the CPU, we can improve DRAM performance by as much as 2.4X over naïve random access on the CPU. In this mode, we use the host CPU to trigger DMA transfer by writing appropriate control information in the internal register of the DMA engine. We also encode the sparse graph access patterns as locally-stored BRAM-hosted AXI descriptor chains to drive the AXI DMA engines with minimal CPU involvement under Scatter Gather mode. In this configuration, we deliver an additional 3X speedup, for a cumulative throughput improvement of 7X over a CPU-based approach using caches while running an OS to manage irregular access.},
+  publisher={IEEE},
+  journal={22nd Reconfigurable Architectures Workshop (co-located with IPDPS)},
+  year={2015},
+  month={May},
+  pdf={graphmmu_raw2015.pdf},
+  html={https://ieeexplore.ieee.org/document/7284298},
+  preview={graphmmu_raw2015.png}
+}
+
+@article{case_sc2015,
+  bibtex_show={true},
+  title={A Case for Embedded FPGA-based SoCs for Energy-Efficient Acceleration of Graph Problems (Position Paper)},
+  author={Moorthy, Pradeep and Siddhartha and Kapre, Nachiket},
+  abstract={Sparse graph problems are notoriously hard to accelerate on conventional platforms due to irregular memory access patterns resulting in underutilization of memory bandwidth. These bottle- necks on traditional x86-based systems mean that sparse graph problems scale very poorly, both in terms of performance and power efficiency. A cluster of embedded SoCs (systems-on-chip) with closely-coupled FPGA accelerators can support distributed memory accesses with better matched low-power processing. We first conduct preliminary experiments across a range of COTS (commercial off-the-shelf) embedded SoCs to establish promise for energy-efficiency acceleration of sparse problems. We select the Xilinx Zynq SoC with FPGA accelerators to construct a prototype 32-node Beowulf cluster. We develop specialized MPI routines and memory DMA offload engines to support irregular communication efficiently. In this setup, we use the ARM processor as a data marshaller for local DMA traffic as well as remote MPI traffic while offloading compute-intensive portions on the FPGA. Across a representative set of benchmark graphs, we show that embedded SoCs with FPGA accelerators can exceed the energy efficiency of an Intel E5-2407 by as much as 1.7X at a total graph processing capacity of 91–95 MTEPS.},
+  publisher={ACM},
+  journal={Supercomputing Frontiers and Innovations (SC)},
+  year={2015},
+  month={March},
+  pdf={case_scf2015.pdf},
+  html={https://dl.acm.org/doi/abs/10.5555/3026759.3026766},
+  preview={case_scf2015.png}
+}
+
+@article{criticality_fpga2015,
+  bibtex_show={true},
+  title={FPGA Acceleration of Irregular Iterative Computations using Criticality-Aware Dataflow Optimizations (Poster)},
+  author={Siddhartha and Kapre, Nachiket},
+  abstract={FPGA acceleration of large irregular dataflow graphs is often limited by the long tail distribution of parallelism on fine-grained overlay dataflow architectures. In this paper, we show how to overcome these limitations by exploiting criticality information along compute paths; both statically during graph pre-processing and dynamically at runtime. We statically reassociate the high-fanin dataflow chains by providing faster routes for late arriving inputs. We also perform a fanout decomposition and selective node replication in order to distribute serialization costs across multiple PEs. Additionally, we modify the dataflow firing rule in hardware to prefer critical nodes when multiple nodes are ready for dataflow evaluation. Effectively these transformations reduce the length of the tail in the parallelism profile for these large-scale graphs. Across a range of dataflow benchmarks extracted from Sparse LU factorization, we demonstrate up to 2.5× (mean 1.21×) improvement when using the static pre-processing alone, a 2.4× (mean 1.17×) improvement when using only dynamic optimizations and an overall 2.9× (mean 1.39×) improvement when both static and dynamic optimizations are enabled. These improvements are on top of 3--10× speedups over CPU implementations without our transformation enabled.},
+  publisher={ACM/SIGDA},
+  journal={International Symposium on Field-Programmable Gate Arrays (FPGA)},
+  year={2015},
+  month={February},
+  html={https://dl.acm.org/doi/10.1145/2684746.2689110},
+  preview={criticality_fpga2015.png}
+}
+
+@article{fanout_fpt2014,
+  bibtex_show={true},
+  title={Fanout Decomposition Dataflow Optimizations for FPGA-based Sparse LU Factorization (Short Paper)},
+  author={Siddhartha and Kapre, Nachiket},
+  abstract={Performance of FPGA-based token dataflow architectures is often limited by the long tail distribution of parallelism in the compute paths of dataflow graphs. This is known to limit speedup of dataflow processing of Sparse LU factorization to only 3–10X over CPUs. In this paper, we show how to overcome these limitations by exploiting criticality information along compute paths; both statically during graph pre-processing and dynamically at runtime. We statically restructure the high-fanin dataflow chains using a technique inspired by Huffman encoding where we provide faster routes for late arriving inputs as predicted through our timing models. We also perform a fanout decomposition and selective node replication in order to distribute serialization costs across multiple PEs. This static restructuring overhead is small; roughly the cost of a single iteration, and is amortized across 1000s of LU iterations at runtime. Additionally, we modify the dataflow firing rule in hardware to prefer critical nodes when multiple nodes are ready for dataflow evaluation. We compute this criticality offline through a one-time slack analysis and implement this in hardware at virtually no cost through a trivial address encoding ordered by criticality. For dataflow graphs extracted for sparse LU factorization, we demonstrate up to 2.5X (mean 1.21X) improvement when using the static preprocessing alone, a 2.4X (mean 1.17X) improvement when using only runtime optimizations alone while an overall 2.9X (mean 1.39X) improvement when both static and runtime optimizations are enabled across a range of benchmark problems.},
+  publisher={IEEE},
+  journal={International Conference on Field-Programmable Technology (FPT)},
+  year={2014},
+  month={December},
+  pdf={fanout_fpt2014.pdf},
+  html={https://ieeexplore.ieee.org/document/7082787},
+  preview={fanout_fpt2014.png}
+}
+
+@article{hetero_fpl2014,
+  bibtex_show={true},
+  title={Heterogeneous Dataflow Architectures for FPGA-based Sparse LU Factorization (Short Paper)},
+  author={Siddhartha and Kapre, Nachiket},
+  abstract={FPGA-based token dataflow architectures with heterogeneous computation and communication subsystems can accelerate hard-to-parallelize, irregular computations in sparse LU factorization. We combine software pre-processing and architecture customization to fully expose and exploit the underlying heterogeneity in the factorization algorithm. We perform a one-time pre-processing of the sparse matrices in software to generate dataflow graphs that capture raw parallelism in the computation through substitution and reassociation transformations. We customize the dataflow architecture by picking the right mixture of addition and multiplication processing elements to match the observed balance in the dataflow graphs. Additionally, we modify the network-on-chip to route certain critical dependencies on a separate, faster communication channel while relegating less-critical traffic to the existing channels. Using our techniques, we show how to achieve speedups of up to 37% over existing state-of-the-art FPGA-based sparse LU factorization systems that can already run 3–4x faster than CPU-based sparse LU solvers using the same hardware constraints.},
+  publisher={IEEE},
+  journal={International Conference on Field Programmable Logic and Applications (FPL)},
+  year={2014},
+  month={September},
+  pdf={hetero_fpl2014.pdf},
+  html={https://ieeexplore.ieee.org/document/6927401},
+  preview={hetero_fpl2014.png}
+}
+
+@article{limits_dfm2014,
+  bibtex_show={true},
+  title={Limits of Statically-Scheduled Token Dataflow Processing},
+  author={Kapre, Nachiket and Siddhartha},
+  abstract={FPGA-based token dataflow processing has been shown to accelerate hard-to-parallelize problems exhibiting irregular dataflow parallelism by as much as an order of magnitude when compared to conventional compute organizations. However, when the structure of the dataflow computation is known upfront, either at compile time or at the start of execution, we can employ static scheduling techniques to further improve performance and enhance compute density of the dataflow hardware. In this paper, we identify the costs and performance trends of both static and dynamic scheduling approaches when considering hardware acceleration of SPICE device equations and Sparse LU factorization in circuit graphs. While the experiments are limited to a case study, the hardware design and dataflow compiler are general and can be extended to other problems and instances where dataflow computing may be applicable. With this study, we hope to develop a quantitative basis for the design of a hybrid dataflow architecture that combines both static and dynamic scheduling techniques. We observe a performance benefit of 2–4x and a resource utilization saving of 2–3x in favor of statically scheduled hardware.},
+  publisher={IEEE},
+  journal={International workshop on "Data-Flow Models (DFM) for extreme scale computing"},
+  year={2014},
+  month={August},
+  pdf={dataflow_dfm2014.pdf},
+  html={https://ieeexplore.ieee.org/document/7089023},
+  preview={limits_dfm2014.png}
+}
+
 @article{breaking_fccm2014,
-  title={Breaking Sequential Dependencies in FPGA-based Sparse LU Factorization},
+  bibtex_show={true},
+  title={Breaking Sequential Dependencies in FPGA-based Sparse LU Factorization (Short Paper)},
   author={Siddhartha and Kapre, Nachiket},
   abstract={Substitution, and reassociation of irregular sparse LU factorization can deliver up to 31% additional speedup over an existing state-of-the-art parallel FPGA implementation where further parallelization was deemed virtually impossible. The state-of-the-art implementation is already capable of delivering 3x acceleration over CPU-based sparse LU solvers. Sparse LU factorization is a well-known computational bottleneck in many existing scientific and engineering applications and is notoriously hard to parallelize due to inherent sequential dependencies in the computation graph. In this paper, we show how to break these alleged inherent dependencies using depth-limited substitution, and reassociation of the resulting computation. This is a work-parallelism tradeoff that is well-suited for implementation on FPGA-based token dataflow architectures. Such compute organizations are capable of fast parallel processing of large irregular graphs extracted from the sparse LU computation. We manage and control the growth in additional work due to substitution through careful selection of substitution depth. We exploit associativity in the generated graphs to restructure long compute chains into reduction trees.},
   publisher={IEEE},
+  journal={International Symposium on Field Programmable Custom Computing Machines (FCCM)},
   year={2014},
   month={May},
   pdf={breaking_fccm2014.pdf},
-  html={http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6861588&refinements%3D4273508772%26sortType%3Dasc_p_Sequence%26filter%3DAND%28p_IS_Number%3A6861562%29},
+  html={https://ieeexplore.ieee.org/document/6861588},
   preview={breaking_fccm2014.png}
 }
 
 @article{posterdac2013,
-  title={Poster on current research project on Sparse LU Factorization},
+  title={Sparse LU Factorization (Poster, PhD Forum)},
   author={Siddhartha,},
   abstract={Sparse matrix factorization is a common engineering problem that is often a computational bottleneck in many scientific applications. In this project, we explore techniques such as unrolling and re-association in an attempt to parallelize the front-solve algorithm found in the LU decomposition method. The front-solve is a major computational bottleneck in the KLU sparse matrix factorization algorithm, which can be found in applications such as SPICE, an EDA tool for designing and testing hardware. We have developed a preliminary sparse matrix pre-processor software model in Java to generate compute graphs of matrix solve operations using the novel technique, which are then used to benchmark the improvements in performance over the existing methods.},
+  journal={Design Automation Conference (DAC)},
   publisher={IEEE},
   year={2013},
   month={June},

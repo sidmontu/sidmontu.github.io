@@ -2,9 +2,97 @@
   - firstname: ["Nachiket"]
     url: https://nachiket.github.io
 
+"Bean":
+  - firstname: ["Andrew"]
+    url: https://scholar.google.com.sg/citations?user=KX85fmYAAAAJ&hl
+
+"Moorthy":
+  - firstname: ["Pradeep"]
+    url: https://scholar.google.com.sg/citations?user=JFBGYEMAAAAJ&hl
+
+"Han":
+  - firstname: ["Jianglei"]
+    url: https://scholar.google.com.sg/citations?user=V_F88z0AAAAJ&hl
+
+"Hegde":
+  - firstname: ["Gopalakrishna"]
+    url: https://scholar.google.com.sg/citations?user=YvNvGp4AAAAJ&hl
+
+"Ramasamy":
+  - firstname: ["Nachiappan"]
+    url: https://scholar.google.com.sg/citations?user=5GHN4-gAAAAJ&hl
+
+"Modi":
+  - firstname: ["Gourav"]
+    url: https://scholar.google.com.sg/citations?user=cAtwVawAAAAJ&hl
+
+"Maheshwari":
+  - firstname: ["Sidharth"]
+    url: https://scholar.google.com.sg/citations?user=iKvALkYAAAAJ&hl
+
+"Salmond":
+  - firstname: ["Daniel"]
+    url: https://dblp.org/pid/77/6952.html
+
+"Blackmore":
+  - firstname: ["Perry"]
+    url: https://ieeexplore.ieee.org/author/37086577419
+
+"Flower":
+  - firstname: ["Barry"]
+    url: https://scholar.google.com.sg/citations?user=Jfa6he5Wu6UC&hl
+
+"Faraone":
+  - firstname: ["Julian"]
+    url: https://scholar.google.com.sg/citations?user=EXWzHR0AAAAJ&hl
+
 "Podolsky":
   - firstname: ["Boris", "B.", "B. Y.", "Boris Yakovlevich"]
     url: https://en.wikipedia.org/wiki/Boris_Podolsky
+
+"Lee":
+  - firstname: ["Yee Hui"]
+    url: https://scholar.google.com/citations?hl=en&user=tY35hx0AAAAJ
+
+"Moss":
+  - firstname: ["Duncan J.M."]
+    url: https://scholar.google.com.sg/citations?user=n7lfIdYAAAAJ&hl
+
+"Boland":
+  - firstname: ["David"]
+    url: https://scholar.google.com.sg/citations?user=WYbNPxkAAAAJ&hl
+
+"Leong":
+  - firstname: ["Philip H.W."]
+    url: https://scholar.google.com.sg/citations?user=fTs3gvMAAAAJ&hl
+
+"Wilton":
+  - firstname: ["Steve"]
+    url: https://scholar.google.com.sg/citations?user=Yt2JQfQAAAAJ&hl
+
+"Tridgell":
+  - firstname: ["Stephen"]
+    url: https://scholar.google.com.sg/citations?user=kx2RYG4AAAAJ&hl
+
+"Rasoulinezhad":
+  - firstname: ["SeyedRamin"]
+    url: https://scholar.google.com.sg/citations?user=9FDRjYoAAAAJ&hl
+
+"Zhou":
+  - firstname: ["Hao"]
+    url: https://dblp.org/pid/63/778-8.html
+
+"Wang":
+  - firstname: ["Lingli"]
+    url: https://ieeexplore.ieee.org/author/37600175900
+
+"Kastner":
+  - firstname: ["Ryan"]
+    url: https://scholar.google.com/citations?user=lfLiQmcAAAAJ&hl
+
+"Khodamoradi":
+  - firstname: ["Alireza"]
+    url: https://scholar.google.com/citations?user=Lypdi3MAAAAJ&hl
 
 "Rosen":
   - firstname: ["Nathan", "N."]
