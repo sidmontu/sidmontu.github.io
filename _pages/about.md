@@ -1,7 +1,7 @@
 ---
 layout: about
 title: about
-permalink: /
+permalink: /about
 # subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
 subtitle: Systems Design Engineer, AMD Singapore (formerly Xilinx)
 
